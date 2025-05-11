@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Начало on Перестроение бизнес процессов</title>
+    <link>http://localhost:1313/tags/%D0%BD%D0%B0%D1%87%D0%B0%D0%BB%D0%BE/</link>
+    <description>Recent content in Начало on Перестроение бизнес процессов</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 19 Feb 2025 10:00:00 +0300</lastBuildDate><atom:link href="http://localhost:1313/tags/%D0%BD%D0%B0%D1%87%D0%B0%D0%BB%D0%BE/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Первые шаги в исследовании: Погружение в тему</title>
+      <link>http://localhost:1313/journal/post-3/</link>
+      <pubDate>Wed, 19 Feb 2025 10:00:00 +0300</pubDate>
+      
+      <guid>http://localhost:1313/journal/post-3/</guid>
+      
+      <description>&lt;h1 id=&#34;начинаем-исследование&#34;&gt;Начинаем исследование!&lt;/h1&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/research-start.jpg&#34; alt=&#34;Книги и заметки&#34;&gt;
+&lt;em&gt;Разбираемся в основах мультиагентных систем&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;После установочной встречи наша команда приступила к первому важному этапу – исследованию. Поскольку для многих из нас тема мультиагентных систем (МАС) и применения GPT в них нова, мы решили начать с основ.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Чем мы занимались на этой неделе:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Обзор литературы:&lt;/strong&gt; Арслан (наш исследователь) подготовил подборку вводных статей и материалов по МАС и современным языковым моделям.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Обсуждение:&lt;/strong&gt; Провели встречу, где обсудили ключевые концепции: что такое &amp;ldquo;агент&amp;rdquo;, как они могут взаимодействовать, какие задачи могут решать.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Поиск примеров:&lt;/strong&gt; Искали простые примеры использования МАС, чтобы лучше понять их практическое применение.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;Первые выводы:&lt;/strong&gt;&lt;/p&gt;</description>
+      
+    </item>
+    
+  </channel>
+</rss>

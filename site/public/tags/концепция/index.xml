@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Концепция on Перестроение бизнес процессов</title>
+    <link>http://localhost:1313/tags/%D0%BA%D0%BE%D0%BD%D1%86%D0%B5%D0%BF%D1%86%D0%B8%D1%8F/</link>
+    <description>Recent content in Концепция on Перестроение бизнес процессов</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 05 Mar 2025 10:00:00 +0300</lastBuildDate><atom:link href="http://localhost:1313/tags/%D0%BA%D0%BE%D0%BD%D1%86%D0%B5%D0%BF%D1%86%D0%B8%D1%8F/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Первый спринт: Анализ задачи и концепция управления аппаратом</title>
+      <link>http://localhost:1313/journal/post-5/</link>
+      <pubDate>Wed, 05 Mar 2025 10:00:00 +0300</pubDate>
+      
+      <guid>http://localhost:1313/journal/post-5/</guid>
+      
+      <description>&lt;h1 id=&#34;результаты-первого-спринта-от-ковров-к-концепции&#34;&gt;Результаты первого спринта: От ковров к концепции&lt;/h1&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/sprint-1-board-carpets.jpg&#34; alt=&#34;Доска Trello с задачами спринта&#34;&gt;
+&lt;em&gt;Первые задачи по анализу и концепции управления выполнены&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Завершился наш первый полноценный спринт! Основной фокус был на первых двух шагах нашего плана разработки аппарата для мойки ковров: &amp;ldquo;Анализ задачи и постановка целей&amp;rdquo; и &amp;ldquo;Разработка концепции управления&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Ключевые результаты спринта:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Анализ задачи (Шаг 1):&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Типы ковров:&lt;/strong&gt; Детально описали требования к обработке резиновых, текстильных и комбинированных ковров. (Георгий)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Этапы обработки:&lt;/strong&gt; Зафиксировали последовательность: замачивание, мойка, отжим, сушка.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Критические параметры:&lt;/strong&gt; Определили диапазоны температур (45°C резина, 25°C текстиль), скоростей щеток (высокая/низкая) и примерное время сушки для разных типов. (Георгий, Арслан)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Разработка концепции управления (Шаг 2):&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Тип управления:&lt;/strong&gt; Решили остановиться на полуавтоматическом режиме с предустановками и возможностью ручной корректировки – это дает гибкость. (Вся команда)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Набор датчиков:&lt;/strong&gt; Определили необходимый минимум: датчик уровня воды (поплавковый), термопара (температура), энкодер (обороты щеток), датчик тока двигателя (заклинивание). (Дима, Арслан)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Аварийные сценарии:&lt;/strong&gt; Продумали базовые реакции на перегрев, заклинивание, утечку воды. (Дима)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Применение ИИ/GPT в процессе:&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Генерация документации:&lt;/strong&gt; Попробовали использовать GPT для генерации черновиков описаний требований на основе наших обсуждений. Это ускорило процесс документирования. (Георгий)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Прототип &amp;ldquo;Агента-Требований&amp;rdquo;:&lt;/strong&gt; Дима создал простой скрипт (прототип агента), который хранит ключевые параметры (температуры, скорости) и позволяет легко их обновлять и проверять зависимости. Пока очень базово, но это первый шаг к МАС-управлению процессом.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;Что было сложно:&lt;/strong&gt;&lt;/p&gt;</description>
+      
+    </item>
+    
+  </channel>
+</rss>

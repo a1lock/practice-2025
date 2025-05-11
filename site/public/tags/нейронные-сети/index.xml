@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Нейронные Сети on Перестроение бизнес процессов</title>
+    <link>http://localhost:1313/tags/%D0%BD%D0%B5%D0%B9%D1%80%D0%BE%D0%BD%D0%BD%D1%8B%D0%B5-%D1%81%D0%B5%D1%82%D0%B8/</link>
+    <description>Recent content in Нейронные Сети on Перестроение бизнес процессов</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 19 Feb 2025 10:00:00 +0300</lastBuildDate><atom:link href="http://localhost:1313/tags/%D0%BD%D0%B5%D0%B9%D1%80%D0%BE%D0%BD%D0%BD%D1%8B%D0%B5-%D1%81%D0%B5%D1%82%D0%B8/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Исследование: Мойка ковров и умные помощники</title>
+      <link>http://localhost:1313/journal/post-3/</link>
+      <pubDate>Wed, 19 Feb 2025 10:00:00 +0300</pubDate>
+      
+      <guid>http://localhost:1313/journal/post-3/</guid>
+      
+      <description>&lt;h1 id=&#34;погружение-в-тему-ковры-датчики-и-ии&#34;&gt;Погружение в тему: Ковры, датчики и ИИ&lt;/h1&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/research-deep-dive.jpg&#34; alt=&#34;Человек изучает схемы и графики&#34;&gt;
+&lt;em&gt;Анализируем технологии мойки и возможности ИИ&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Первая неделя после формирования команды была посвящена глубокому погружению в предметную область и исследованию технологий. Работа велась по двум основным направлениям:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;1. Технологии мойки и сушки автомобильных ковров:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Анализ существующих решений:&lt;/strong&gt; Изучили, какие аппараты уже есть на рынке, их плюсы и минусы (использовали информацию о конкурентах, как в вашем PDF).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Типы ковров и загрязнений:&lt;/strong&gt; Начали разбираться в особенностях резиновых, текстильных и комбинированных ковров. Какие загрязнения типичны? Как они влияют на выбор режима мойки?&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Ключевые параметры:&lt;/strong&gt; Определили, какие параметры критичны: температура воды, скорость щеток, время циклов (шаг 1 из вашего плана).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Идея с нейронной сетью:&lt;/strong&gt; В ходе исследования подтвердили гипотезу о том, что ИИ (нейронная сеть) может быть полезен для автоматического определения типа загрязнения и подбора оптимального режима. Это стало одним из ключевых направлений для дальнейшего изучения.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;2. ИИ и МАС для оптимизации процесса разработки:&lt;/strong&gt;&lt;/p&gt;</description>
+      
+    </item>
+    
+  </channel>
+</rss>

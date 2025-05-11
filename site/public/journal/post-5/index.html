@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en-us"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="content-type" content="text/html">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title itemprop="name">Первый спринт: Анализ задачи и концепция управления аппаратом | Перестроение бизнес процессов</title>
+<meta property="og:title" content="Первый спринт: Анализ задачи и концепция управления аппаратом | Перестроение бизнес процессов" />
+<meta name="twitter:title" content="Первый спринт: Анализ задачи и концепция управления аппаратом | Перестроение бизнес процессов" />
+<meta itemprop="name" content="Первый спринт: Анализ задачи и концепция управления аппаратом | Перестроение бизнес процессов" />
+<meta name="application-name" content="Первый спринт: Анализ задачи и концепция управления аппаратом | Перестроение бизнес процессов" />
+<meta property="og:site_name" content="" />
+
+<meta name="description" content="">
+<meta itemprop="description" content="" />
+<meta property="og:description" content="" />
+<meta name="twitter:description" content="" />
+
+<meta property="og:locale" content="en-us" />
+<meta name="language" content="en-us" />
+
+  <link rel="alternate" hreflang="en" href="http://localhost:1313/journal/post-5/" title="" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.145.0">
+
+    
+    <meta property="og:url" content="http://localhost:1313/journal/post-5/">
+  <meta property="og:site_name" content="Перестроение бизнес процессов">
+  <meta property="og:title" content="Первый спринт: Анализ задачи и концепция управления аппаратом">
+  <meta property="og:description" content="Результаты первого спринта: От ковров к концепции Первые задачи по анализу и концепции управления выполнены
+Завершился наш первый полноценный спринт! Основной фокус был на первых двух шагах нашего плана разработки аппарата для мойки ковров: “Анализ задачи и постановка целей” и “Разработка концепции управления”.
+Ключевые результаты спринта:
+Анализ задачи (Шаг 1): Типы ковров: Детально описали требования к обработке резиновых, текстильных и комбинированных ковров. (Георгий) Этапы обработки: Зафиксировали последовательность: замачивание, мойка, отжим, сушка. Критические параметры: Определили диапазоны температур (45°C резина, 25°C текстиль), скоростей щеток (высокая/низкая) и примерное время сушки для разных типов. (Георгий, Арслан) Разработка концепции управления (Шаг 2): Тип управления: Решили остановиться на полуавтоматическом режиме с предустановками и возможностью ручной корректировки – это дает гибкость. (Вся команда) Набор датчиков: Определили необходимый минимум: датчик уровня воды (поплавковый), термопара (температура), энкодер (обороты щеток), датчик тока двигателя (заклинивание). (Дима, Арслан) Аварийные сценарии: Продумали базовые реакции на перегрев, заклинивание, утечку воды. (Дима) Применение ИИ/GPT в процессе: Генерация документации: Попробовали использовать GPT для генерации черновиков описаний требований на основе наших обсуждений. Это ускорило процесс документирования. (Георгий) Прототип “Агента-Требований”: Дима создал простой скрипт (прототип агента), который хранит ключевые параметры (температуры, скорости) и позволяет легко их обновлять и проверять зависимости. Пока очень базово, но это первый шаг к МАС-управлению процессом. Что было сложно:">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="journal">
+    <meta property="article:published_time" content="2025-03-05T10:00:00+03:00">
+    <meta property="article:modified_time" content="2025-03-05T10:00:00+03:00">
+    <meta property="article:tag" content="Спринт">
+    <meta property="article:tag" content="Анализ">
+    <meta property="article:tag" content="Концепция">
+    <meta property="article:tag" content="Требования">
+    <meta property="article:tag" content="Датчики">
+    <meta property="article:tag" content="ИИ">
+
+
+    
+    
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Первый спринт: Анализ задачи и концепция управления аппаратом">
+  <meta name="twitter:description" content="Результаты первого спринта: От ковров к концепции Первые задачи по анализу и концепции управления выполнены
+Завершился наш первый полноценный спринт! Основной фокус был на первых двух шагах нашего плана разработки аппарата для мойки ковров: “Анализ задачи и постановка целей” и “Разработка концепции управления”.
+Ключевые результаты спринта:
+Анализ задачи (Шаг 1): Типы ковров: Детально описали требования к обработке резиновых, текстильных и комбинированных ковров. (Георгий) Этапы обработки: Зафиксировали последовательность: замачивание, мойка, отжим, сушка. Критические параметры: Определили диапазоны температур (45°C резина, 25°C текстиль), скоростей щеток (высокая/низкая) и примерное время сушки для разных типов. (Георгий, Арслан) Разработка концепции управления (Шаг 2): Тип управления: Решили остановиться на полуавтоматическом режиме с предустановками и возможностью ручной корректировки – это дает гибкость. (Вся команда) Набор датчиков: Определили необходимый минимум: датчик уровня воды (поплавковый), термопара (температура), энкодер (обороты щеток), датчик тока двигателя (заклинивание). (Дима, Арслан) Аварийные сценарии: Продумали базовые реакции на перегрев, заклинивание, утечку воды. (Дима) Применение ИИ/GPT в процессе: Генерация документации: Попробовали использовать GPT для генерации черновиков описаний требований на основе наших обсуждений. Это ускорило процесс документирования. (Георгий) Прототип “Агента-Требований”: Дима создал простой скрипт (прототип агента), который хранит ключевые параметры (температуры, скорости) и позволяет легко их обновлять и проверять зависимости. Пока очень базово, но это первый шаг к МАС-управлению процессом. Что было сложно:">
+
+
+    
+
+    <link rel="canonical" href="http://localhost:1313/journal/post-5/">
+    <link href="/style.min.e390ba7da26222f4dc42a349955d76dbbe44e5ce2535a43de5a70633a0a9ec3c.css" rel="stylesheet">
+    <link href="/code-highlight.min.706d31975fec544a864cb7f0d847a73ea55ca1df91bf495fd12a177138d807cf.css" rel="stylesheet">
+
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
+    <link rel="mask-icon" href="/icons/safari-pinned-tab.svg">
+    <link rel="shortcut icon" href="/favicon.ico">
+
+
+
+
+<link rel="manifest" href="http://localhost:1313/site.webmanifest">
+
+<meta name="msapplication-config" content="/browserconfig.xml">
+<meta name="msapplication-TileColor" content="#2d89ef">
+<meta name="theme-color" content="#434648">
+
+    
+    <link rel="icon" type="image/svg+xml" href="/icons/favicon.svg">
+
+    
+    
+</head>
+<body data-theme = "" class="notransition">
+
+<script src="/js/theme.js"></script>
+
+<div class="navbar" role="navigation">
+    <nav class="menu" aria-label="Main Navigation">
+        <a href="http://localhost:1313/" class="logo">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" 
+viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="feather feather-home">
+<title></title>
+<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+<polyline points="9 22 9 12 15 12 15 22"></polyline>
+</svg>
+        </a>
+        <input type="checkbox" id="menu-trigger" class="menu-trigger" />
+        <label for="menu-trigger">
+            <span class="menu-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" stroke="currentColor" fill="none" viewBox="0 0 14 14"><title>Menu</title><path stroke-linecap="round" stroke-linejoin="round" d="M10.595 7L3.40726 7"></path><path stroke-linecap="round" stroke-linejoin="round" d="M10.5096 3.51488L3.49301 3.51488"></path><path stroke-linecap="round" stroke-linejoin="round" d="M10.5096 10.4851H3.49301"></path><path stroke-linecap="round" stroke-linejoin="round" d="M0.5 12.5V1.5C0.5 0.947715 0.947715 0.5 1.5 0.5H12.5C13.0523 0.5 13.5 0.947715 13.5 1.5V12.5C13.5 13.0523 13.0523 13.5 12.5 13.5H1.5C0.947715 13.5 0.5 13.0523 0.5 12.5Z"></path></svg>
+            </span>
+        </label>
+
+        <div class="trigger">
+            <ul class="trigger-container">
+                
+                
+                <li>
+                    <a class="menu-link " href="/about/">
+                        О проекте
+                    </a>
+                    
+                </li>
+                
+                <li>
+                    <a class="menu-link " href="/team/">
+                        Участники
+                    </a>
+                    
+                </li>
+                
+                <li>
+                    <a class="menu-link active" href="/journal/">
+                        Журнал
+                    </a>
+                    
+                </li>
+                
+                <li>
+                    <a class="menu-link " href="/resources/">
+                        Ресурсы
+                    </a>
+                    
+                </li>
+                
+                <li class="menu-separator">
+                    <span>|</span>
+                </li>
+                
+                
+            </ul>
+            <a id="mode" href="#">
+                <svg xmlns="http://www.w3.org/2000/svg" class="mode-sunny" width="21" height="21" viewBox="0 0 14 14" stroke-width="1">
+<title>LIGHT</title><g><circle cx="7" cy="7" r="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></circle><line x1="7" y1="0.5" x2="7" y2="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="2.4" y1="2.4" x2="3.82" y2="3.82" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="0.5" y1="7" x2="2.5" y2="7" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="2.4" y1="11.6" x2="3.82" y2="10.18" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="7" y1="13.5" x2="7" y2="11.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="11.6" y1="11.6" x2="10.18" y2="10.18" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="13.5" y1="7" x2="11.5" y2="7" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="11.6" y1="2.4" x2="10.18" y2="3.82" fill="none" stroke-linecap="round" stroke-linejoin="round"></line></g></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" class="mode-moon" width="21" height="21" viewBox="0 0 14 14" stroke-width="1">
+<title>DARK</title><g><circle cx="7" cy="7" r="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></circle><line x1="7" y1="0.5" x2="7" y2="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="2.4" y1="2.4" x2="3.82" y2="3.82" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="0.5" y1="7" x2="2.5" y2="7" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="2.4" y1="11.6" x2="3.82" y2="10.18" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="7" y1="13.5" x2="7" y2="11.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="11.6" y1="11.6" x2="10.18" y2="10.18" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="13.5" y1="7" x2="11.5" y2="7" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="11.6" y1="2.4" x2="10.18" y2="3.82" fill="none" stroke-linecap="round" stroke-linejoin="round"></line></g></svg>
+            </a>
+        </div>
+    </nav>
+</div>
+
+<div class="wrapper post">
+    <main class="page-content" aria-label="Content">
+        <article>
+            <header class="header">
+                <h1 class="header-title">Первый спринт: Анализ задачи и концепция управления аппаратом</h1>
+                
+                
+                
+                    
+                    
+                    
+                    <div class="post-meta">
+                        <time datetime="2025-03-05T10:00:00&#43;03:00" itemprop="datePublished"> Mar 5, 2025 </time>
+                    </div>
+                    
+                 
+
+            </header>
+            
+            <div class="page-content">
+                <h1 id="результаты-первого-спринта-от-ковров-к-концепции">Результаты первого спринта: От ковров к концепции</h1>
+<p><img src="/images/sprint-1-board-carpets.jpg" alt="Доска Trello с задачами спринта">
+<em>Первые задачи по анализу и концепции управления выполнены</em></p>
+<p>Завершился наш первый полноценный спринт! Основной фокус был на первых двух шагах нашего плана разработки аппарата для мойки ковров: &ldquo;Анализ задачи и постановка целей&rdquo; и &ldquo;Разработка концепции управления&rdquo;.</p>
+<p><strong>Ключевые результаты спринта:</strong></p>
+<ol>
+<li><strong>Анализ задачи (Шаг 1):</strong>
+<ul>
+<li><strong>Типы ковров:</strong> Детально описали требования к обработке резиновых, текстильных и комбинированных ковров. (Георгий)</li>
+<li><strong>Этапы обработки:</strong> Зафиксировали последовательность: замачивание, мойка, отжим, сушка.</li>
+<li><strong>Критические параметры:</strong> Определили диапазоны температур (45°C резина, 25°C текстиль), скоростей щеток (высокая/низкая) и примерное время сушки для разных типов. (Георгий, Арслан)</li>
+</ul>
+</li>
+<li><strong>Разработка концепции управления (Шаг 2):</strong>
+<ul>
+<li><strong>Тип управления:</strong> Решили остановиться на полуавтоматическом режиме с предустановками и возможностью ручной корректировки – это дает гибкость. (Вся команда)</li>
+<li><strong>Набор датчиков:</strong> Определили необходимый минимум: датчик уровня воды (поплавковый), термопара (температура), энкодер (обороты щеток), датчик тока двигателя (заклинивание). (Дима, Арслан)</li>
+<li><strong>Аварийные сценарии:</strong> Продумали базовые реакции на перегрев, заклинивание, утечку воды. (Дима)</li>
+</ul>
+</li>
+<li><strong>Применение ИИ/GPT в процессе:</strong>
+<ul>
+<li><strong>Генерация документации:</strong> Попробовали использовать GPT для генерации черновиков описаний требований на основе наших обсуждений. Это ускорило процесс документирования. (Георгий)</li>
+<li><strong>Прототип &ldquo;Агента-Требований&rdquo;:</strong> Дима создал простой скрипт (прототип агента), который хранит ключевые параметры (температуры, скорости) и позволяет легко их обновлять и проверять зависимости. Пока очень базово, но это первый шаг к МАС-управлению процессом.</li>
+</ul>
+</li>
+</ol>
+<p><strong>Что было сложно:</strong></p>
+<ul>
+<li><strong>Согласование параметров:</strong> Было много обсуждений по точным значениям температуры и скорости щеток. Пришлось искать компромиссы.</li>
+<li><strong>Моделирование МАС:</strong> Пока не до конца ясно, как лучше всего реализовать идею с агентами для управления процессом разработки. Продолжаем изучать.</li>
+</ul>
+<p><strong>Главный урок:</strong> Детальный анализ на старте очень важен. Эксперименты с GPT и простейшими агентами уже показывают потенциал для ускорения рутинных задач.</p>
+<p>В следующем спринте переходим к проектированию аппаратной платформы (выбор контроллера, схемы) и разработке алгоритмов работы.</p>
+
+            </div>
+        </article></main>
+</div>
+<footer class="footer">
+    <span class="footer_item"> </span>
+    &nbsp;
+
+    <div class="footer_social-icons">
+</div>
+    <small class="footer_copyright">
+        © 2025 .
+        
+    </small>
+</footer>
+
+
+
+
+
+
+
+    
+    <script async src="http://localhost:1313/js/main.js" ></script>
+
+    
+
+</body>
+</html>

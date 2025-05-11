@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Симуляция on Перестроение бизнес процессов</title>
+    <link>http://localhost:1313/tags/%D1%81%D0%B8%D0%BC%D1%83%D0%BB%D1%8F%D1%86%D0%B8%D1%8F/</link>
+    <description>Recent content in Симуляция on Перестроение бизнес процессов</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 02 Apr 2025 10:00:00 +0300</lastBuildDate><atom:link href="http://localhost:1313/tags/%D1%81%D0%B8%D0%BC%D1%83%D0%BB%D1%8F%D1%86%D0%B8%D1%8F/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Первая демонстрация: UI макеты и симуляция логики</title>
+      <link>http://localhost:1313/journal/post-9/</link>
+      <pubDate>Wed, 02 Apr 2025 10:00:00 +0300</pubDate>
+      
+      <guid>http://localhost:1313/journal/post-9/</guid>
+      
+      <description>&lt;h1 id=&#34;показываем-первые-результаты-интерфейс-и-мозги&#34;&gt;Показываем первые результаты: Интерфейс и &amp;ldquo;мозги&amp;rdquo;&lt;/h1&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/ui-demo.jpg&#34; alt=&#34;Человек показывает макет интерфейса на планшете&#34;&gt;
+&lt;em&gt;Демонстрация макетов UI и симуляции работы алгоритмов&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;На этой неделе мы провели первую внутреннюю демонстрацию для нескольких коллег, не входящих в нашу основную команду. Цель – получить свежий взгляд на наши наработки по пользовательскому интерфейсу (Шаг 5) и показать, как работает логика аппарата (Шаг 4) в симуляции.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Что показывали:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Макеты UI (Шаг 5):&lt;/strong&gt; Представили два варианта интерфейса, которые мы прорабатываем:
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Вариант 1 (Бюджетный):&lt;/strong&gt; Нарисовали макет с 4 кнопками (Вкл/Выкл, Режим, +/-) и простым LCD-дисплеем 16x2. Показали, как будет выглядеть выбор режима и индикация ошибок (светодиоды + текст типа &amp;ldquo;Ошибка: Перегрев&amp;rdquo;).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Вариант 2 (Продвинутый):&lt;/strong&gt; Продемонстрировали концепт с сенсорным TFT-дисплеем (типа Nextion) с графическим меню и иконками режимов.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Симуляция алгоритмов (Шаг 4):&lt;/strong&gt; Дима запустил скрипт, симулирующий работу контроллера STM32. На вход подавались разные &amp;ldquo;сигналы&amp;rdquo; от датчиков (виртуальных), и скрипт показывал, как меняется состояние аппарата (включение/выключение насосов, ТЭНов, щеток) согласно нашим блок-схемам и логике переключения режимов.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;ИИ &amp;ldquo;в деле&amp;rdquo; (Идея):&lt;/strong&gt; Рассказали про идею использования нейронной сети для определения загрязнений и показали, как GPT-агент (из прошлого поста) генерирует сообщения об ошибках.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;Сбор обратной связи (с помощью ИИ-ассистента):&lt;/strong&gt;&lt;/p&gt;</description>
+      
+    </item>
+    
+  </channel>
+</rss>

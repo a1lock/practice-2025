@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Инструменты on Перестроение бизнес процессов</title>
+    <link>http://localhost:1313/tags/%D0%B8%D0%BD%D1%81%D1%82%D1%80%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D1%8B/</link>
+    <description>Recent content in Инструменты on Перестроение бизнес процессов</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 26 Feb 2025 10:00:00 +0300</lastBuildDate><atom:link href="http://localhost:1313/tags/%D0%B8%D0%BD%D1%81%D1%82%D1%80%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D1%8B/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Инструменты для Hardware, Software и ИИ</title>
+      <link>http://localhost:1313/journal/post-4/</link>
+      <pubDate>Wed, 26 Feb 2025 10:00:00 +0300</pubDate>
+      
+      <guid>http://localhost:1313/journal/post-4/</guid>
+      
+      <description>&lt;h1 id=&#34;собираем-наш-ящик-с-инструментами&#34;&gt;Собираем наш &amp;ldquo;ящик с инструментами&amp;rdquo;&lt;/h1&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/hw-sw-tools.jpg&#34; alt=&#34;Набор инструментов: молоток, отвертка, ноутбук&#34;&gt;
+&lt;em&gt;Выбираем средства для работы над аппаратом и процессами&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Продолжаем налаживать нашу работу. Эта неделя была посвящена выбору инструментов, которые помогут нам эффективно двигаться по обоим трекам нашего проекта: созданию аппарата для мойки ковров и оптимизации процессов с помощью ИИ/МАС.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Наш выбор:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Коммуникация:&lt;/strong&gt; Стандартный набор - Telegram для быстрых вопросов и Discord для структурированных обсуждений и хранения важной информации по каналам (например, #hardware, #software, #ai_mas).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Управление задачами:&lt;/strong&gt; Выбрали Trello из-за его простоты и наглядности. Создали доски как для задач по аппарату (с колонками по этапам: Анализ, Проектирование, Разработка, Тестирование), так и для экспериментов с ИИ/МАС.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Хранение кода и документации:&lt;/strong&gt; GitHub для всего кода (прошивка контроллера, скрипты для ИИ/МАС) и основной технической документации (схемы, спецификации) в формате Markdown прямо в репозитории.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Проектирование Hardware:&lt;/strong&gt; Пока используем KiCad (бесплатный) или EasyEDA (онлайн) или Miro для рисования первых схем. Для 3D-моделирования корпуса решили привлечь внешнего специалиста – &lt;strong&gt;нашли контакт человека, который готов разработать и напечатать модель для MVP за разумную плату.&lt;/strong&gt; Это отличная новость!&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Эксперименты с ИИ/МАС:&lt;/strong&gt; Начнем с Python и стандартных библиотек (вроде Scikit-learn для простых задач классификации, если будем пробовать имитировать нейронку) и, возможно, посмотрим на &lt;code&gt;aiomas&lt;/code&gt; или просто самописные классы для начала.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;Критерии выбора:&lt;/strong&gt;&lt;/p&gt;</description>
+      
+    </item>
+    
+  </channel>
+</rss>

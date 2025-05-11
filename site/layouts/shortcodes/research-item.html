@@ -1,0 +1,7 @@
+<div class="research-item">
+  <div class="research-icon">{{ .Get "icon" }}</div>
+  <div class="research-text">
+    <h4>{{ .Get "title" }}</h4>
+    <p>{{ .Inner | markdownify }}</p>
+  </div>
+</div> 

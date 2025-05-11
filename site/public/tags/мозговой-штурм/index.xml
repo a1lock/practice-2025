@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Мозговой Штурм on Перестроение бизнес процессов</title>
+    <link>http://localhost:1313/tags/%D0%BC%D0%BE%D0%B7%D0%B3%D0%BE%D0%B2%D0%BE%D0%B9-%D1%88%D1%82%D1%83%D1%80%D0%BC/</link>
+    <description>Recent content in Мозговой Штурм on Перестроение бизнес процессов</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 12 Mar 2025 10:00:00 +0300</lastBuildDate><atom:link href="http://localhost:1313/tags/%D0%BC%D0%BE%D0%B7%D0%B3%D0%BE%D0%B2%D0%BE%D0%B9-%D1%88%D1%82%D1%83%D1%80%D0%BC/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Командный штурм: Идеи для архитектуры</title>
+      <link>http://localhost:1313/journal/post-6/</link>
+      <pubDate>Wed, 12 Mar 2025 10:00:00 +0300</pubDate>
+      
+      <guid>http://localhost:1313/journal/post-6/</guid>
+      
+      <description>&lt;h1 id=&#34;генерируем-идеи-вместе&#34;&gt;Генерируем идеи вместе!&lt;/h1&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/brainstorming.jpg&#34; alt=&#34;Стикеры на доске&#34;&gt;
+&lt;em&gt;Обсуждаем, как могут взаимодействовать наши &amp;ldquo;агенты&amp;rdquo;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Эта неделя была посвящена совместному творчеству! Мы провели сессию мозгового штурма, чтобы обсудить возможные подходы к архитектуре нашей будущей мультиагентной системы. Было важно услышать мнение каждого, ведь у всех нас немного разный взгляд на проблему.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Как это было:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Подготовка:&lt;/strong&gt; Сформулировали основной вопрос: &amp;ldquo;Какие типы агентов нам нужны и как они должны взаимодействовать для [Цель проекта, например, автоматизации обработки запросов]?&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Генерация идей:&lt;/strong&gt; Каждый накидывал свои идеи на виртуальную доску (использовали [Название инструмента, например, Miro или FigJam]). Получилось много разных вариантов!&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Обсуждение и группировка:&lt;/strong&gt; Вместе обсудили предложенные идеи, сгруппировали похожие, выделили плюсы и минусы разных подходов.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;К чему пришли (предварительно):&lt;/strong&gt;&lt;/p&gt;</description>
+      
+    </item>
+    
+  </channel>
+</rss>

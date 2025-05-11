@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Рефлексия on Перестроение бизнес процессов</title>
+    <link>http://localhost:1313/tags/%D1%80%D0%B5%D1%84%D0%BB%D0%B5%D0%BA%D1%81%D0%B8%D1%8F/</link>
+    <description>Recent content in Рефлексия on Перестроение бизнес процессов</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 26 Mar 2025 10:00:00 +0300</lastBuildDate><atom:link href="http://localhost:1313/tags/%D1%80%D0%B5%D1%84%D0%BB%D0%B5%D0%BA%D1%81%D0%B8%D1%8F/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Рефлексия: Координация Hardware, Software и ИИ/МАС</title>
+      <link>http://localhost:1313/journal/post-8/</link>
+      <pubDate>Wed, 26 Mar 2025 10:00:00 +0300</pubDate>
+      
+      <guid>http://localhost:1313/journal/post-8/</guid>
+      
+      <description>&lt;h1 id=&#34;оглядываясь-назад-как-мы-координируем-сложный-проект&#34;&gt;Оглядываясь назад: Как мы координируем сложный проект?&lt;/h1&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/team-coordination-reflection.jpg&#34; alt=&#34;Команда обсуждает схему на доске&#34;&gt;
+&lt;em&gt;Обсуждаем успехи и трудности координации разных направлений&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Прошло полтора месяца активной работы над проектом мойки ковров. Учитывая его комплексность (hardware, software, ИИ/МАС для оптимизации процессов), мы решили провести ретроспективу и обсудить, как нам удается координировать все эти направления.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Что получается хорошо:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Общее видение:&lt;/strong&gt; Вся команда понимает обе цели проекта – создать аппарат и улучшить процесс его создания с помощью ИИ/МАС.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Использование ИИ-помощников:&lt;/strong&gt; Эксперименты с GPT для генерации документации и анализа текстов оказались полезными и экономят время. Простые &amp;ldquo;агенты&amp;rdquo; для отслеживания требований и компонентов помогают избегать ошибок.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Атмосфера:&lt;/strong&gt; Сохраняется открытость и готовность помогать друг другу, что особенно важно при работе на стыке разных дисциплин.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Что требует улучшения:&lt;/strong&gt;&lt;/p&gt;</description>
+      
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Пользователи on Перестроение бизнес процессов</title>
+    <link>http://localhost:1313/tags/%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D0%B8/</link>
+    <description>Recent content in Пользователи on Перестроение бизнес процессов</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 02 Apr 2025 10:00:00 +0300</lastBuildDate><atom:link href="http://localhost:1313/tags/%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D0%B8/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Первые тесты: Показываем прототип коллегам</title>
+      <link>http://localhost:1313/journal/post-9/</link>
+      <pubDate>Wed, 02 Apr 2025 10:00:00 +0300</pubDate>
+      
+      <guid>http://localhost:1313/journal/post-9/</guid>
+      
+      <description>&lt;h1 id=&#34;показываем-что-получилось&#34;&gt;Показываем, что получилось!&lt;/h1&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/user-testing.jpg&#34; alt=&#34;Человек смотрит на экран ноутбука&#34;&gt;
+&lt;em&gt;Первая демонстрация нашего прототипа&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;На этой неделе мы решились на важный шаг – показать наш текущий прототип нескольким коллегам из другого отдела, которые потенциально могли бы использовать нашу систему в будущем. Это было немного волнительно, ведь это первая внешняя оценка нашей работы.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Как проходила демонстрация:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Подготовка:&lt;/strong&gt; Мы подготовили небольшой сценарий использования: показали, как система может помочь обработать типичный запрос.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Демо:&lt;/strong&gt; Дима провел показ, объясняя, как работает каждый шаг.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Сбор обратной связи:&lt;/strong&gt; После демо мы попросили коллег поделиться своими впечатлениями и задали несколько вопросов:
+&lt;ul&gt;
+&lt;li&gt;Насколько понятен интерфейс (пусть пока и очень простой)?&lt;/li&gt;
+&lt;li&gt;Видят ли они потенциальную пользу от такой системы?&lt;/li&gt;
+&lt;li&gt;Что показалось неудобным или непонятным?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;Что мы услышали:&lt;/strong&gt;&lt;/p&gt;</description>
+      
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Результаты on Перестроение бизнес процессов</title>
+    <link>http://localhost:1313/tags/%D1%80%D0%B5%D0%B7%D1%83%D0%BB%D1%8C%D1%82%D0%B0%D1%82%D1%8B/</link>
+    <description>Recent content in Результаты on Перестроение бизнес процессов</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 05 Mar 2025 10:00:00 +0300</lastBuildDate><atom:link href="http://localhost:1313/tags/%D1%80%D0%B5%D0%B7%D1%83%D0%BB%D1%8C%D1%82%D0%B0%D1%82%D1%8B/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Первый спринт: Учимся на практике</title>
+      <link>http://localhost:1313/journal/post-5/</link>
+      <pubDate>Wed, 05 Mar 2025 10:00:00 +0300</pubDate>
+      
+      <guid>http://localhost:1313/journal/post-5/</guid>
+      
+      <description>&lt;h1 id=&#34;итоги-первого-спринта&#34;&gt;Итоги первого спринта&lt;/h1&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/sprint-board.jpg&#34; alt=&#34;Доска с задачами&#34;&gt;
+&lt;em&gt;Подводим итоги первой недели активной работы&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Первый спринт позади! Это была насыщенная неделя, полная обучения и первых практических шагов. Мы старались работать по гибкой методологии, хоть и в упрощенном виде.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Что успели сделать:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Аналитика:&lt;/strong&gt; Георгий (аналитик) начал описывать один из ключевых бизнес-процессов, который мы хотим улучшить. Получилась первая схема &amp;ldquo;как есть&amp;rdquo;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Исследование:&lt;/strong&gt; Арслан продолжил изучение фреймворков для МАС, подготовил краткий обзор по [Название фреймворка 1] и [Название фреймворка 2].&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Разработка:&lt;/strong&gt; Я (Дима) настроил базовое окружение для разработки и начал писать первые наброски кода для взаимодействия с API GPT. Пока это очень простой прототип, но он работает!&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Координация:&lt;/strong&gt; Иван помог нам организовать ежедневные короткие созвоны (стендапы), чтобы синхронизироваться.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;Что было сложно:&lt;/strong&gt;&lt;/p&gt;</description>
+      
+    </item>
+    
+  </channel>
+</rss>

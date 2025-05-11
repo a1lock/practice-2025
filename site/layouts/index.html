@@ -1,0 +1,21 @@
+{{ define "main" }}
+<div class="wrapper post"> {{/* Структура из single.html */}}
+    <main class="page-content" aria-label="Content"> {{/* Структура из single.html */}}
+        <article> {{/* Структура из single.html */}}
+            <header class="header">
+                <h1 class="header-title">{{ .Title }}</h1> {{/* Отображаем заголовок главной страницы */}}
+                {{/* Информация о дате здесь не нужна, поэтому удаляем её */}}
+            </header>
+            
+            {{/* Таблица контента (TOC) здесь не нужна */}}
+            
+            <div class="page-content"> {{/* Контейнер для основного контента */}}
+                {{ .Content }} {{/* Выводим текст из content/_index.md */}}
+            </div>
+        </article>
+        
+        {{/* Комментарии здесь не нужны */}}
+        
+    </main>
+</div>
+{{ end }} 

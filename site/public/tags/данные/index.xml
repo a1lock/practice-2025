@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Данные on Перестроение бизнес процессов</title>
+    <link>http://localhost:1313/tags/%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D0%B5/</link>
+    <description>Recent content in Данные on Перестроение бизнес процессов</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 19 Mar 2025 10:00:00 +0300</lastBuildDate><atom:link href="http://localhost:1313/tags/%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D0%B5/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Технический вызов: Разбираемся с форматом данных</title>
+      <link>http://localhost:1313/journal/post-7/</link>
+      <pubDate>Wed, 19 Mar 2025 10:00:00 +0300</pubDate>
+      
+      <guid>http://localhost:1313/journal/post-7/</guid>
+      
+      <description>&lt;h1 id=&#34;когда-что-то-идет-не-по-плану&#34;&gt;Когда что-то идет не по плану&lt;/h1&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/coding-challenge.jpg&#34; alt=&#34;Код на экране с ошибкой&#34;&gt;
+&lt;em&gt;Не все идет гладко, но мы находим решения&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;В разработке не всегда все идет по плану, особенно когда пробуешь что-то новое. На этой неделе мы столкнулись с первым серьезным техническим вызовом.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;В чем была проблема?&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;При попытке передать данные от одного агента к другому через GPT, мы обнаружили, что модель не всегда возвращает ответ в том формате, который мы ожидаем. Иногда структура JSON нарушалась, иногда добавлялись лишние пояснения. Это ломало логику взаимодействия агентов в нашем прототипе.&lt;/p&gt;</description>
+      
+    </item>
+    
+  </channel>
+</rss>

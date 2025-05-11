@@ -1,0 +1,52 @@
+<div class="resource-card">
+  <div class="resource-image">
+    <img src="{{ .Get "image" }}" alt="{{ .Get "title" }}">
+  </div>
+  <div class="resource-content">
+    <h4>{{ .Get "title" }}</h4>
+    <p>{{ .Get "description" }}</p>
+    <a href="{{ .Get "link" }}" class="read-more">Читать →</a>
+  </div>
+</div>
+
+<!-- Добавляем стили прямо в шаблон -->
+<style>
+  .resource-card {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 20px;
+    transition: box-shadow 0.3s;
+  }
+  
+  .resource-card:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+
+  .resource-card .read-more {
+    display: inline-block;
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 500;
+    margin-top: 12px;
+    transition: color 0.3s;
+  }
+
+  .resource-card .read-more:hover {
+    color: #0056b3;
+    text-decoration: underline;
+    margin-left: 10px;
+    transition: margin-left 0.3s;
+
+  }
+
+  /* Адаптивность для мобильных */
+  @media (max-width: 768px) {
+    .resource-card {
+      padding: 12px;
+    }
+    .resource-card .read-more {
+      font-size: 14px;
+    }
+  }
+</style>

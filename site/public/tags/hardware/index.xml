@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hardware on Перестроение бизнес процессов</title>
+    <link>http://localhost:1313/tags/hardware/</link>
+    <description>Recent content in Hardware on Перестроение бизнес процессов</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 26 Mar 2025 10:00:00 +0300</lastBuildDate><atom:link href="http://localhost:1313/tags/hardware/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Рефлексия: Координация Hardware, Software и ИИ/МАС</title>
+      <link>http://localhost:1313/journal/post-8/</link>
+      <pubDate>Wed, 26 Mar 2025 10:00:00 +0300</pubDate>
+      
+      <guid>http://localhost:1313/journal/post-8/</guid>
+      
+      <description>&lt;h1 id=&#34;оглядываясь-назад-как-мы-координируем-сложный-проект&#34;&gt;Оглядываясь назад: Как мы координируем сложный проект?&lt;/h1&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/team-coordination-reflection.jpg&#34; alt=&#34;Команда обсуждает схему на доске&#34;&gt;
+&lt;em&gt;Обсуждаем успехи и трудности координации разных направлений&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Прошло полтора месяца активной работы над проектом мойки ковров. Учитывая его комплексность (hardware, software, ИИ/МАС для оптимизации процессов), мы решили провести ретроспективу и обсудить, как нам удается координировать все эти направления.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Что получается хорошо:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Общее видение:&lt;/strong&gt; Вся команда понимает обе цели проекта – создать аппарат и улучшить процесс его создания с помощью ИИ/МАС.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Использование ИИ-помощников:&lt;/strong&gt; Эксперименты с GPT для генерации документации и анализа текстов оказались полезными и экономят время. Простые &amp;ldquo;агенты&amp;rdquo; для отслеживания требований и компонентов помогают избегать ошибок.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Атмосфера:&lt;/strong&gt; Сохраняется открытость и готовность помогать друг другу, что особенно важно при работе на стыке разных дисциплин.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Что требует улучшения:&lt;/strong&gt;&lt;/p&gt;</description>
+      
+    </item>
+    
+    <item>
+      <title>Технический вызов: Отладка связи контроллера и &#34;агента&#34; GPT</title>
+      <link>http://localhost:1313/journal/post-7/</link>
+      <pubDate>Wed, 19 Mar 2025 10:00:00 +0300</pubDate>
+      
+      <guid>http://localhost:1313/journal/post-7/</guid>
+      
+      <description>&lt;h1 id=&#34;когда-железо-встречается-с-ии-первые-трудности&#34;&gt;Когда &amp;ldquo;железо&amp;rdquo; встречается с ИИ: Первые трудности&lt;/h1&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/hw-sw-debug.jpg&#34; alt=&#34;Паяльник, провода, код на экране&#34;&gt;
+&lt;em&gt;Отладка взаимодействия контроллера STM32 и программных агентов&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Разработка на стыке hardware и software всегда полна вызовов, а когда добавляется ИИ – становится еще интереснее. На этой неделе мы столкнулись с первыми трудностями при попытке наладить взаимодействие между нашим контроллером STM32 и первыми прототипами программных агентов, включая &amp;ldquo;агента&amp;rdquo;, использующего GPT.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;В чем была проблема?&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Мы хотели реализовать простую функцию: при возникновении ошибки на аппаратном уровне (например, сигнал с датчика тока о заклинивании щетки), контроллер STM32 отправляет код ошибки на сервер, где &amp;ldquo;GPT-агент&amp;rdquo; генерирует понятное для пользователя сообщение об ошибке для вывода на будущий дисплей (Шаг 5 - Индикация ошибок).&lt;/p&gt;</description>
+      
+    </item>
+    
+    <item>
+      <title>Проектируем &#34;железо&#34; и алгоритмы: STM32, H-мосты и блок-схемы</title>
+      <link>http://localhost:1313/journal/post-6/</link>
+      <pubDate>Wed, 12 Mar 2025 10:00:00 +0300</pubDate>
+      
+      <guid>http://localhost:1313/journal/post-6/</guid>
+      
+      <description>&lt;h1 id=&#34;от-концепции-к-железу-и-логике&#34;&gt;От концепции к &amp;ldquo;железу&amp;rdquo; и логике&lt;/h1&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/hw-algorithms-design.jpg&#34; alt=&#34;Электронная схема и блок-схема на экране&#34;&gt;
+&lt;em&gt;Проектируем аппаратную часть и продумываем алгоритмы работы&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Этот спринт был посвящен &amp;ldquo;сердцу&amp;rdquo; и &amp;ldquo;мозгу&amp;rdquo; нашего аппарата: проектированию аппаратной платформы (Шаг 3) и разработке алгоритмов работы (Шаг 4). Параллельно мы думали, как концепции МАС могут помочь структурировать эту работу.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Проектирование аппаратной платформы (Шаг 3):&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Контроллер:&lt;/strong&gt; Выбрали &lt;strong&gt;STM32F4&lt;/strong&gt;. Он достаточно мощный, имеет много периферии (ADC для аналоговых датчиков, GPIO для цифровых и энкодера) и считается надежным решением. (Дима)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Силовые цепи:&lt;/strong&gt; Продумали подключение основных исполнительных механизмов:
+&lt;ul&gt;
+&lt;li&gt;Двигатели щеток → H-мост &lt;strong&gt;L298N&lt;/strong&gt; (проверенное решение для управления моторами).&lt;/li&gt;
+&lt;li&gt;ТЭНы (нагреватели) → Твердотельное реле &lt;strong&gt;SSR&lt;/strong&gt; (для коммутации больших нагрузок).&lt;/li&gt;
+&lt;li&gt;Насосы → Обычные электромеханические реле. (Дима)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Подключение датчиков:&lt;/strong&gt; Спланировали, как аналоговые (термопара) и цифровые (энкодер, поплавок) датчики будут подключаться к ADC и GPIO контроллера.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Защита:&lt;/strong&gt; Предусмотрели базовую защиту: предохранители и TVS-диоды от скачков напряжения. (Дима)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Моделирование связей (МАС-идея):&lt;/strong&gt; Использовали наш прототип &amp;ldquo;Агента-Требований&amp;rdquo; и создали &amp;ldquo;Агента-Компонентов&amp;rdquo;. Теперь при выборе компонента (например, L298N) агент проверяет, соответствует ли он требованиям (например, по току двигателя), заданным в &amp;ldquo;Агенте-Требований&amp;rdquo;. Это помогает отлавливать несоответствия на раннем этапе.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Разработка алгоритмов работы (Шаг 4):&lt;/strong&gt;&lt;/p&gt;</description>
+      
+    </item>
+    
+  </channel>
+</rss>

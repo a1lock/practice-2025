@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Трудности on Перестроение бизнес процессов</title>
+    <link>http://localhost:1313/tags/%D1%82%D1%80%D1%83%D0%B4%D0%BD%D0%BE%D1%81%D1%82%D0%B8/</link>
+    <description>Recent content in Трудности on Перестроение бизнес процессов</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 19 Mar 2025 10:00:00 +0300</lastBuildDate><atom:link href="http://localhost:1313/tags/%D1%82%D1%80%D1%83%D0%B4%D0%BD%D0%BE%D1%81%D1%82%D0%B8/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Технический вызов: Отладка связи контроллера и &#34;агента&#34; GPT</title>
+      <link>http://localhost:1313/journal/post-7/</link>
+      <pubDate>Wed, 19 Mar 2025 10:00:00 +0300</pubDate>
+      
+      <guid>http://localhost:1313/journal/post-7/</guid>
+      
+      <description>&lt;h1 id=&#34;когда-железо-встречается-с-ии-первые-трудности&#34;&gt;Когда &amp;ldquo;железо&amp;rdquo; встречается с ИИ: Первые трудности&lt;/h1&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/hw-sw-debug.jpg&#34; alt=&#34;Паяльник, провода, код на экране&#34;&gt;
+&lt;em&gt;Отладка взаимодействия контроллера STM32 и программных агентов&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Разработка на стыке hardware и software всегда полна вызовов, а когда добавляется ИИ – становится еще интереснее. На этой неделе мы столкнулись с первыми трудностями при попытке наладить взаимодействие между нашим контроллером STM32 и первыми прототипами программных агентов, включая &amp;ldquo;агента&amp;rdquo;, использующего GPT.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;В чем была проблема?&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Мы хотели реализовать простую функцию: при возникновении ошибки на аппаратном уровне (например, сигнал с датчика тока о заклинивании щетки), контроллер STM32 отправляет код ошибки на сервер, где &amp;ldquo;GPT-агент&amp;rdquo; генерирует понятное для пользователя сообщение об ошибке для вывода на будущий дисплей (Шаг 5 - Индикация ошибок).&lt;/p&gt;</description>
+      
+    </item>
+    
+  </channel>
+</rss>

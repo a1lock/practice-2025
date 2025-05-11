@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Будущее on Перестроение бизнес процессов</title>
+    <link>http://localhost:1313/tags/%D0%B1%D1%83%D0%B4%D1%83%D1%89%D0%B5%D0%B5/</link>
+    <description>Recent content in Будущее on Перестроение бизнес процессов</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 16 Apr 2025 10:00:00 +0300</lastBuildDate><atom:link href="http://localhost:1313/tags/%D0%B1%D1%83%D0%B4%D1%83%D1%89%D0%B5%D0%B5/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Планы на будущее: Следующие шаги проекта</title>
+      <link>http://localhost:1313/journal/post-11/</link>
+      <pubDate>Wed, 16 Apr 2025 10:00:00 +0300</pubDate>
+      
+      <guid>http://localhost:1313/journal/post-11/</guid>
+      
+      <description>&lt;h1 id=&#34;смотрим-вперед-что-дальше&#34;&gt;Смотрим вперед: Что дальше?&lt;/h1&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/looking-ahead.jpg&#34; alt=&#34;Дорожная карта или стрелки, указывающие вперед&#34;&gt;
+&lt;em&gt;Планируем следующие этапы развития нашего проекта&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Первые два месяца работы над проектом пролетели незаметно! Мы сформировали команду, выбрали инструменты, провели исследование, создали и улучшили первый прототип, получили обратную связь. Теперь пора заглянуть немного дальше и спланировать следующие шаги.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Наши ближайшие цели:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Расширение функционала прототипа:&lt;/strong&gt; Добавить обработку еще одного типа бизнес-запросов, чтобы проверить гибкость нашей архитектуры.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Разработка простого UI:&lt;/strong&gt; Создать минимальный пользовательский интерфейс, чтобы с системой было удобнее взаимодействовать не только техническим специалистам.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Углубленное исследование:&lt;/strong&gt; Арслану предстоит изучить [Конкретная технология или подход, например, методы оценки качества ответов GPT или фреймворк LangChain] для повышения эффективности наших агентов.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Формализация требований:&lt;/strong&gt; Георгию нужно будет более детально описать требования к следующим версиям системы на основе собранной обратной связи и нашего видения.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;Долгосрочное видение (очень предварительно):&lt;/strong&gt;&lt;/p&gt;</description>
+      
+    </item>
+    
+  </channel>
+</rss>
