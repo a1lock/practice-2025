@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Чат Ассистент</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- Подключаем клиентскую библиотеку Socket.IO -->
+    <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+</head>
+<body>
+    <h1>AI Чат Ассистент</h1>
+    <div id="chat-container">
+        <div id="chat-box">
+            <!-- Сообщения будут добавляться сюда -->
+        </div>
+        <div id="input-area">
+            <input type="text" id="message-input" placeholder="Введите ваш вопрос...">
+            <button id="send-button">Отправить</button>
+        </div>
+    </div>
+
+    <!-- Подключаем наш JavaScript файл -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html> 
