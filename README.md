@@ -13,7 +13,7 @@
 
 ## Вариативная часть задания
 
-Практическая реализация технологии: создание [базового HTTP-сервера с нуля на Python](https://joaoventura.net/blog/2017/python-webserver/).
+Практическая реализация технологии: создание [Реализация RESTful Web API с помощью Python и Flask](https://blog.luisrei.com/articles/flaskrest.html)
 
 ## Ответственный по проектной (учебной) практике
 
