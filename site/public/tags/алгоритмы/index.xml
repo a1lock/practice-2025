@@ -15,8 +15,6 @@
       <guid>http://localhost:1313/journal/post-10/</guid>
       
       <description>&lt;h1 id=&#34;работа-над-ошибками-и-подготовка-к-тестам&#34;&gt;Работа над ошибками и подготовка к тестам&lt;/h1&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/iteration-refinement.jpg&#34; alt=&#34;Процесс улучшения - доска с задачами, схемы&#34;&gt;
-&lt;em&gt;Итеративно улучшаем проект и готовимся к реальным тестам&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;После анализа обратной связи с первой демонстрации этот спринт был посвящен итеративным улучшениям и подготовке к следующему важному этапу – тестированию.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Над чем работали:&lt;/strong&gt;&lt;/p&gt;
 &lt;ol&gt;
@@ -50,15 +48,17 @@
     </item>
     
     <item>
-      <title>Проектируем &#34;железо&#34; и алгоритмы: STM32, H-мосты и блок-схемы</title>
+      <title>Проектируем железо и алгоритмы: STM32, H-мосты и блок-схемы</title>
       <link>http://localhost:1313/journal/post-6/</link>
       <pubDate>Wed, 12 Mar 2025 10:00:00 +0300</pubDate>
       
       <guid>http://localhost:1313/journal/post-6/</guid>
       
       <description>&lt;h1 id=&#34;от-концепции-к-железу-и-логике&#34;&gt;От концепции к &amp;ldquo;железу&amp;rdquo; и логике&lt;/h1&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/hw-algorithms-design.jpg&#34; alt=&#34;Электронная схема и блок-схема на экране&#34;&gt;
-&lt;em&gt;Проектируем аппаратную часть и продумываем алгоритмы работы&lt;/em&gt;&lt;/p&gt;
+&lt;h2&gt;&lt;/h2&gt;
+&lt;div style=&#34;text-align: center; margin-top: 1em; margin-bottom: 1em;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/images/6post.png&#34; alt=&#34;&#34; style=&#34;height: auto; width: auto; vertical-align: middle; width: auto; height: 450px&#34;&gt;
+&lt;/div&gt;
 &lt;p&gt;Этот спринт был посвящен &amp;ldquo;сердцу&amp;rdquo; и &amp;ldquo;мозгу&amp;rdquo; нашего аппарата: проектированию аппаратной платформы (Шаг 3) и разработке алгоритмов работы (Шаг 4). Параллельно мы думали, как концепции МАС могут помочь структурировать эту работу.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Проектирование аппаратной платформы (Шаг 3):&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;

@@ -15,8 +15,7 @@
       <guid>http://localhost:1313/journal/post-11/</guid>
       
       <description>&lt;h1 id=&#34;смотрим-вперед-что-дальше&#34;&gt;Смотрим вперед: Что дальше?&lt;/h1&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/looking-ahead.jpg&#34; alt=&#34;Дорожная карта или стрелки, указывающие вперед&#34;&gt;
-&lt;em&gt;Планируем следующие этапы развития нашего проекта&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/11post.jpg&#34; alt=&#34;Будущий результат&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Первые два месяца работы над проектом пролетели незаметно! Мы сформировали команду, выбрали инструменты, провели исследование, создали и улучшили первый прототип, получили обратную связь. Теперь пора заглянуть немного дальше и спланировать следующие шаги.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Наши ближайшие цели:&lt;/strong&gt;&lt;/p&gt;
 &lt;ol&gt;
@@ -37,8 +36,6 @@
       <guid>http://localhost:1313/journal/post-10/</guid>
       
       <description>&lt;h1 id=&#34;работа-над-ошибками-и-подготовка-к-тестам&#34;&gt;Работа над ошибками и подготовка к тестам&lt;/h1&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/iteration-refinement.jpg&#34; alt=&#34;Процесс улучшения - доска с задачами, схемы&#34;&gt;
-&lt;em&gt;Итеративно улучшаем проект и готовимся к реальным тестам&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;После анализа обратной связи с первой демонстрации этот спринт был посвящен итеративным улучшениям и подготовке к следующему важному этапу – тестированию.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Над чем работали:&lt;/strong&gt;&lt;/p&gt;
 &lt;ol&gt;
@@ -79,8 +76,6 @@
       <guid>http://localhost:1313/journal/post-9/</guid>
       
       <description>&lt;h1 id=&#34;показываем-первые-результаты-интерфейс-и-мозги&#34;&gt;Показываем первые результаты: Интерфейс и &amp;ldquo;мозги&amp;rdquo;&lt;/h1&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/ui-demo.jpg&#34; alt=&#34;Человек показывает макет интерфейса на планшете&#34;&gt;
-&lt;em&gt;Демонстрация макетов UI и симуляции работы алгоритмов&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;На этой неделе мы провели первую внутреннюю демонстрацию для нескольких коллег, не входящих в нашу основную команду. Цель – получить свежий взгляд на наши наработки по пользовательскому интерфейсу (Шаг 5) и показать, как работает логика аппарата (Шаг 4) в симуляции.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Что показывали:&lt;/strong&gt;&lt;/p&gt;
 &lt;ol&gt;
@@ -105,7 +100,7 @@
       <guid>http://localhost:1313/journal/post-8/</guid>
       
       <description>&lt;h1 id=&#34;оглядываясь-назад-как-мы-координируем-сложный-проект&#34;&gt;Оглядываясь назад: Как мы координируем сложный проект?&lt;/h1&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/team-coordination-reflection.jpg&#34; alt=&#34;Команда обсуждает схему на доске&#34;&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/8post.jpg&#34; alt=&#34;Рефлексия&#34;&gt;
 &lt;em&gt;Обсуждаем успехи и трудности координации разных направлений&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;Прошло полтора месяца активной работы над проектом мойки ковров. Учитывая его комплексность (hardware, software, ИИ/МАС для оптимизации процессов), мы решили провести ретроспективу и обсудить, как нам удается координировать все эти направления.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Что получается хорошо:&lt;/strong&gt;&lt;/p&gt;
@@ -119,15 +114,13 @@
     </item>
     
     <item>
-      <title>Технический вызов: Отладка связи контроллера и &#34;агента&#34; GPT</title>
+      <title>Технический вызов: Отладка связи контроллера и агента GPT</title>
       <link>http://localhost:1313/journal/post-7/</link>
       <pubDate>Wed, 19 Mar 2025 10:00:00 +0300</pubDate>
       
       <guid>http://localhost:1313/journal/post-7/</guid>
       
       <description>&lt;h1 id=&#34;когда-железо-встречается-с-ии-первые-трудности&#34;&gt;Когда &amp;ldquo;железо&amp;rdquo; встречается с ИИ: Первые трудности&lt;/h1&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/hw-sw-debug.jpg&#34; alt=&#34;Паяльник, провода, код на экране&#34;&gt;
-&lt;em&gt;Отладка взаимодействия контроллера STM32 и программных агентов&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;Разработка на стыке hardware и software всегда полна вызовов, а когда добавляется ИИ – становится еще интереснее. На этой неделе мы столкнулись с первыми трудностями при попытке наладить взаимодействие между нашим контроллером STM32 и первыми прототипами программных агентов, включая &amp;ldquo;агента&amp;rdquo;, использующего GPT.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;В чем была проблема?&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Мы хотели реализовать простую функцию: при возникновении ошибки на аппаратном уровне (например, сигнал с датчика тока о заклинивании щетки), контроллер STM32 отправляет код ошибки на сервер, где &amp;ldquo;GPT-агент&amp;rdquo; генерирует понятное для пользователя сообщение об ошибке для вывода на будущий дисплей (Шаг 5 - Индикация ошибок).&lt;/p&gt;</description>
@@ -135,15 +128,17 @@
     </item>
     
     <item>
-      <title>Проектируем &#34;железо&#34; и алгоритмы: STM32, H-мосты и блок-схемы</title>
+      <title>Проектируем железо и алгоритмы: STM32, H-мосты и блок-схемы</title>
       <link>http://localhost:1313/journal/post-6/</link>
       <pubDate>Wed, 12 Mar 2025 10:00:00 +0300</pubDate>
       
       <guid>http://localhost:1313/journal/post-6/</guid>
       
       <description>&lt;h1 id=&#34;от-концепции-к-железу-и-логике&#34;&gt;От концепции к &amp;ldquo;железу&amp;rdquo; и логике&lt;/h1&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/hw-algorithms-design.jpg&#34; alt=&#34;Электронная схема и блок-схема на экране&#34;&gt;
-&lt;em&gt;Проектируем аппаратную часть и продумываем алгоритмы работы&lt;/em&gt;&lt;/p&gt;
+&lt;h2&gt;&lt;/h2&gt;
+&lt;div style=&#34;text-align: center; margin-top: 1em; margin-bottom: 1em;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/images/6post.png&#34; alt=&#34;&#34; style=&#34;height: auto; width: auto; vertical-align: middle; width: auto; height: 450px&#34;&gt;
+&lt;/div&gt;
 &lt;p&gt;Этот спринт был посвящен &amp;ldquo;сердцу&amp;rdquo; и &amp;ldquo;мозгу&amp;rdquo; нашего аппарата: проектированию аппаратной платформы (Шаг 3) и разработке алгоритмов работы (Шаг 4). Параллельно мы думали, как концепции МАС могут помочь структурировать эту работу.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Проектирование аппаратной платформы (Шаг 3):&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
@@ -171,8 +166,6 @@
       <guid>http://localhost:1313/journal/post-5/</guid>
       
       <description>&lt;h1 id=&#34;результаты-первого-спринта-от-ковров-к-концепции&#34;&gt;Результаты первого спринта: От ковров к концепции&lt;/h1&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/sprint-1-board-carpets.jpg&#34; alt=&#34;Доска Trello с задачами спринта&#34;&gt;
-&lt;em&gt;Первые задачи по анализу и концепции управления выполнены&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;Завершился наш первый полноценный спринт! Основной фокус был на первых двух шагах нашего плана разработки аппарата для мойки ковров: &amp;ldquo;Анализ задачи и постановка целей&amp;rdquo; и &amp;ldquo;Разработка концепции управления&amp;rdquo;.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Ключевые результаты спринта:&lt;/strong&gt;&lt;/p&gt;
 &lt;ol&gt;
@@ -209,8 +202,11 @@
       <guid>http://localhost:1313/journal/post-4/</guid>
       
       <description>&lt;h1 id=&#34;собираем-наш-ящик-с-инструментами&#34;&gt;Собираем наш &amp;ldquo;ящик с инструментами&amp;rdquo;&lt;/h1&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/hw-sw-tools.jpg&#34; alt=&#34;Набор инструментов: молоток, отвертка, ноутбук&#34;&gt;
-&lt;em&gt;Выбираем средства для работы над аппаратом и процессами&lt;/em&gt;&lt;/p&gt;
+&lt;h2&gt;&lt;/h2&gt;
+&lt;div style=&#34;text-align: center; margin-top: 1em; margin-bottom: 1em;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/images/4post.jpg&#34; alt=&#34;Набор инструментов: молоток, отвертка, ноутбук&#34; style=&#34;height: auto; width: auto; vertical-align: middle;&#34;&gt;
+&lt;/div&gt;
+*Выбираем средства для работы над аппаратом и процессами*
 &lt;p&gt;Продолжаем налаживать нашу работу. Эта неделя была посвящена выбору инструментов, которые помогут нам эффективно двигаться по обоим трекам нашего проекта: созданию аппарата для мойки ковров и оптимизации процессов с помощью ИИ/МАС.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Наш выбор:&lt;/strong&gt;&lt;/p&gt;
 &lt;ol&gt;
@@ -232,8 +228,7 @@
       <guid>http://localhost:1313/journal/post-3/</guid>
       
       <description>&lt;h1 id=&#34;погружение-в-тему-ковры-датчики-и-ии&#34;&gt;Погружение в тему: Ковры, датчики и ИИ&lt;/h1&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/research-deep-dive.jpg&#34; alt=&#34;Человек изучает схемы и графики&#34;&gt;
-&lt;em&gt;Анализируем технологии мойки и возможности ИИ&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Анализируем технологии мойки и возможности ИИ&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;Первая неделя после формирования команды была посвящена глубокому погружению в предметную область и исследованию технологий. Работа велась по двум основным направлениям:&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;1. Технологии мойки и сушки автомобильных ковров:&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
@@ -242,6 +237,9 @@
 &lt;li&gt;&lt;strong&gt;Ключевые параметры:&lt;/strong&gt; Определили, какие параметры критичны: температура воды, скорость щеток, время циклов (шаг 1 из вашего плана).&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Идея с нейронной сетью:&lt;/strong&gt; В ходе исследования подтвердили гипотезу о том, что ИИ (нейронная сеть) может быть полезен для автоматического определения типа загрязнения и подбора оптимального режима. Это стало одним из ключевых направлений для дальнейшего изучения.&lt;/li&gt;
 &lt;/ul&gt;
+&lt;div style=&#34;text-align: center; margin-top: 1em; margin-bottom: 1em;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/images/3post.jpg&#34; alt=&#34;Человек изучает схемы и графики&#34; style=&#34;height: auto; width: auto; vertical-align: middle;&#34;&gt;
+&lt;/div&gt;
 &lt;p&gt;&lt;strong&gt;2. ИИ и МАС для оптимизации процесса разработки:&lt;/strong&gt;&lt;/p&gt;</description>
       
     </item>
@@ -254,7 +252,7 @@
       <guid>http://localhost:1313/journal/post-2/</guid>
       
       <description>&lt;h1 id=&#34;наша-команда-в-сборе&#34;&gt;Наша команда в сборе!&lt;/h1&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/team-illustration-carpets.png&#34; alt=&#34;Иллюстрация команды&#34;&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/2post.jpg&#34; alt=&#34;Иллюстрация команды&#34;&gt;
 &lt;em&gt;Команда готова к созданию аппарата для мойки ковров и оптимизации процессов&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;Как мы и анонсировали, следующим шагом было формирование команды, способной справиться с нашим двойным вызовом: разработкой hardware (аппарата для мойки) и внедрением ИИ/МАС для оптимизации процессов.&lt;/p&gt;
 &lt;p&gt;Рады представить вам участников нашей команды (Группа №6):&lt;/p&gt;
@@ -292,6 +290,9 @@
       <description>&lt;h1 id=&#34;перестройка-бизнес-процессов-на-базе-мультиагентных-систем-с-gpt&#34;&gt;Перестройка бизнес-процессов на базе мультиагентных систем с GPT&lt;/h1&gt;
 &lt;h2 id=&#34;цель-проекта&#34;&gt;Цель проекта&lt;/h2&gt;
 &lt;p&gt;Предоставить практическое пошаговое руководство для предприятий по использованию возможностей мультиагентных систем и технологии GPT для фундаментального перепроектирования и оптимизации основных бизнес-процессов.&lt;/p&gt;
+&lt;div style=&#34;text-align: center; margin-top: 1em; margin-bottom: 1em;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/images/1.jpg&#34; alt=&#34;aim&#34; style=&#34;height: auto; width: auto; vertical-align: middle;&#34;&gt;
+&lt;/div&gt;
 &lt;h2 id=&#34;задачи-проекта&#34;&gt;Задачи проекта&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;
@@ -312,15 +313,18 @@
       <description>&lt;h2 id=&#34;полезные-ресурсы&#34;&gt;Полезные ресурсы&lt;/h2&gt;
 &lt;p&gt;На этой странице собраны материалы, которые помогут вам лучше понять наш проект и его значимость. Здесь вы найдете ссылки на организации-партнеры, полезные статьи и инструменты.&lt;/p&gt;
 &lt;h3 id=&#34;партнеры&#34;&gt;Партнеры&lt;/h3&gt;
-&lt;p&gt;&lt;a href=&#34;https://mospolytech.ru/&#34;&gt;&lt;img src=&#34;http://localhost:1313/images/partner1.jpg&#34; alt=&#34;Московский политехнический университет&#34;&gt;&lt;/a&gt;
-&lt;strong&gt;Московский политехнический университет&lt;/strong&gt;&lt;br&gt;
-Научное сопровождение проекта и предоставление исследовательской базы&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://mospolycareermarafon.ru/&#34;&gt;&lt;img src=&#34;http://localhost:1313/images/partner2.jpg&#34; alt=&#34;Карьерный марафон Московского Политеха 2025&#34;&gt;&lt;/a&gt;
-&lt;strong&gt;Карьерный марафон Московского Политеха 2025&amp;quot;&lt;/strong&gt;&lt;br&gt;
-Помощь в профессиональном развитии, направленная на раскрытие потенциала участников через мастер-классы&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://texel.graphics/ru/&#34;&gt;&lt;img src=&#34;http://localhost:1313/images/partner3.jpg&#34; alt=&#34;Компания &amp;ldquo;Texel&amp;rdquo;&#34;&gt;&lt;/a&gt;
-&lt;strong&gt;Компания &amp;ldquo;Texel&amp;rdquo;&lt;/strong&gt;&lt;br&gt;
-Техническая экспертиза и содействие в реализации проекта&lt;/p&gt;</description>
+&lt;h2&gt;&lt;/h2&gt;
+&lt;div style=&#34;margin-left: 20px; display: flex; align-items: flex-start; gap: 20px; margin-bottom: 1.5em;&#34;&gt;
+  &lt;a href=&#34;https://mospolytech.ru/&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34; style=&#34;flex-shrink: 0;&#34;&gt;
+    &lt;img src=&#34;http://localhost:1313/images/5.jpg&#34; alt=&#34;Московский политехнический университет&#34; style=&#34;width: 120px; height: auto; border-radius: 700px; display: block;&#34;&gt;
+  &lt;/a&gt;
+  &lt;div style=&#34;flex-grow: 1;&#34;&gt;
+    &lt;h4 style=&#34;margin-top: 0; margin-bottom: 0.3em; font-size: 1.1em;&#34;&gt;
+      &lt;a href=&#34;https://mospolytech.ru/&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34; style=&#34;text-decoration: none; color: inherit;&#34;&gt;Московский политехнический университет&lt;/a&gt;
+    &lt;/h4&gt;
+    &lt;p style=&#34;margin-top: 0; margin-bottom: 0; font-size: 0.95em&#34;&gt;
+      Научное сопровождение проекта и предоставление исследовательской базы
+    &lt;/p&gt;</description>
       
     </item>
     
@@ -332,24 +336,25 @@
       <guid>http://localhost:1313/team/</guid>
       
       <description>&lt;h2 id=&#34;команда-проекта&#34;&gt;Команда проекта&lt;/h2&gt;
-&lt;p&gt;Наша команда состоит из профессионалов, объединенных общей целью перестройки бизнес-процессов с использованием передовых технологий ИИ. Каждый участник вносит уникальный вклад в успех проекта &amp;ldquo;Перестройка бизнес-процессов на базе мультиагентных систем с GPT&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;Наша команда состоит из людей, объединенных общей целью перестройки бизнес-процессов с использованием передовых технологий ИИ. Каждый участник вносит уникальный вклад в успех проекта &amp;ldquo;Перестройка бизнес-процессов на базе мультиагентных систем с GPT&amp;rdquo;.&lt;/p&gt;
 &lt;hr&gt;
-&lt;h3 id=&#34;литвинов-константин-александрович&#34;&gt;Литвинов Константин Александрович&lt;/h3&gt;
-&lt;h4 class=&#34;role&#34; id=&#34;лидер-проекта&#34;&gt;Лидер проекта&lt;/h4&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/member_litvinov_k.jpg&#34; alt=&#34;Литвинов Константин Александрович&#34;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Роль:&lt;/strong&gt; Определение стратегического видения проекта, общее руководство командой, принятие ключевых решений и представление проекта внешним стейкхолдерам.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Вклад и задачи:&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Разработка общей стратегии и дорожной карты проекта.&lt;/li&gt;
-&lt;li&gt;Постановка целей и задач для команды.&lt;/li&gt;
-&lt;li&gt;Мотивация и поддержка команды.&lt;/li&gt;
-&lt;li&gt;Контроль соответствия результатов стратегическим целям.&lt;/li&gt;
-&lt;li&gt;Управление рисками на высшем уровне.&lt;/li&gt;
-&lt;/ul&gt;
+&lt;h2&gt;&lt;/h2&gt;
+&lt;div style=&#34;text-align: center; margin-top: 1em; margin-bottom: 1em;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/images/2.jpg&#34; alt=&#34;aim&#34; style=&#34;height: auto; width: auto; vertical-align: middle;&#34;&gt;
+&lt;/div&gt;
+&lt;h2&gt;&lt;/h2&gt;
 &lt;hr&gt;
-&lt;h3 id=&#34;жура-иван-владимирович&#34;&gt;Жура Иван Владимирович&lt;/h3&gt;
-&lt;h4 class=&#34;role&#34; id=&#34;координатор-проекта&#34;&gt;Координатор проекта&lt;/h4&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/member_zhura.jpg&#34; alt=&#34;Жура Иван Владимирович&#34;&gt;&lt;/p&gt;</description>
+&lt;h2&gt;&lt;/h2&gt;
+&lt;div class=&#34;member-block&#34; style=&#34;margin-left: 20px; display: flex; align-items: flex-start; gap: 20px; margin-bottom: 2em;&#34;&gt;
+  &lt;div class=&#34;member-image-container&#34; style=&#34;flex-shrink: 0;&#34;&gt;
+    &lt;img src=&#34;http://localhost:1313/images/lider.png&#34; alt=&#34;Литвинов Константин&#34; style=&#34;height: 90px; width: 90px; border-radius: 30%; object-fit: cover;&#34;&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;member-details&#34; style=&#34;flex-grow: 1;&#34;&gt;
+    &lt;h3 style=&#34;margin-top: 0; margin-bottom: 0.1em; font-size: 1.5em;&#34;&gt;Литвинов Константин&lt;/h3&gt;
+    &lt;h4 style=&#34;margin-top: 0; margin-bottom: 0; font-size: 1.1em; font-weight: normal;&#34;&gt;Лидер проекта&lt;/h4&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;Роль:&lt;/strong&gt; Определение стратегического видения проекта, общее руководство командой, принятие ключевых решений и представление проекта внешним стейкхолдерам.&lt;/p&gt;</description>
       
     </item>
     

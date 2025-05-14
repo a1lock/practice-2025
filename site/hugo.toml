@@ -2,3 +2,9 @@ baseURL = 'https://example.org/'
 languageCode = 'en-us'
 title = 'Перестроение бизнес процессов'
 theme = "hugo-blog-awesome" 
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+  [markup.highlight]

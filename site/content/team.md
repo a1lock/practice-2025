@@ -10,14 +10,31 @@ featuredImage: "/images/team-banner.jpg"
 
 ## Команда проекта
 
-Наша команда состоит из профессионалов, объединенных общей целью перестройки бизнес-процессов с использованием передовых технологий ИИ. Каждый участник вносит уникальный вклад в успех проекта "Перестройка бизнес-процессов на базе мультиагентных систем с GPT".
+Наша команда состоит из людей, объединенных общей целью перестройки бизнес-процессов с использованием передовых технологий ИИ. Каждый участник вносит уникальный вклад в успех проекта "Перестройка бизнес-процессов на базе мультиагентных систем с GPT".
 
 ---
 
-### Литвинов Константин Александрович
-#### Лидер проекта {.role}
+##
 
-![Литвинов Константин Александрович](/images/member_litvinov_k.jpg)
+<div style="text-align: center; margin-top: 1em; margin-bottom: 1em;">
+  <img src="/images/2.jpg" alt="aim" style="height: auto; width: auto; vertical-align: middle;">
+</div>
+
+## 
+
+---
+
+##
+
+<div class="member-block" style="margin-left: 20px; display: flex; align-items: flex-start; gap: 20px; margin-bottom: 2em;">
+  <div class="member-image-container" style="flex-shrink: 0;">
+    <img src="/images/lider.png" alt="Литвинов Константин" style="height: 90px; width: 90px; border-radius: 30%; object-fit: cover;">
+  </div>
+  <div class="member-details" style="flex-grow: 1;">
+    <h3 style="margin-top: 0; margin-bottom: 0.1em; font-size: 1.5em;">Литвинов Константин</h3>
+    <h4 style="margin-top: 0; margin-bottom: 0; font-size: 1.1em; font-weight: normal;">Лидер проекта</h4>
+  </div>
+</div>
 
 **Роль:** Определение стратегического видения проекта, общее руководство командой, принятие ключевых решений и представление проекта внешним стейкхолдерам.
 
@@ -32,10 +49,17 @@ featuredImage: "/images/team-banner.jpg"
 
 ---
 
-### Жура Иван Владимирович
-#### Координатор проекта {.role}
+##
 
-![Жура Иван Владимирович](/images/member_zhura.jpg)
+<div class="member-block" style="margin-left: 20px; display: flex; align-items: flex-start; gap: 20px; margin-bottom: 2em;">
+  <div class="member-image-container" style="flex-shrink: 0;">
+    <img src="/images/coordination.png" alt="Жура Иван" style="height: 90px; width: 90px; border-radius: 30%; object-fit: cover;">
+  </div>
+  <div class="member-details" style="flex-grow: 1;">
+    <h3 style="margin-top: 0; margin-bottom: 0.1em; font-size: 1.5em;">Жура Иван</h3>
+    <h4 style="margin-top: 0; margin-bottom: 0; font-size: 1.1em; font-weight: normal;">Координатор проекта</h4>
+  </div>
+</div>
 
 **Роль:** Обеспечение эффективного взаимодействия внутри команды, управление задачами и ресурсами, отслеживание прогресса и координация рабочих процессов.
 
@@ -50,10 +74,17 @@ featuredImage: "/images/team-banner.jpg"
 
 ---
 
-### Мукабенов Дмитрий Олегович
-#### Разработчик {.role}
+##
 
-![Мукабенов Дмитрий Олегович](/images/member_mukabenov.jpg)
+<div class="member-block" style="margin-left: 20px; display: flex; align-items: flex-start; gap: 20px; margin-bottom: 2em;">
+  <div class="member-image-container" style="flex-shrink: 0;">
+    <img src="/images/coding.png" alt="Мукабенов Дмитрий" style="height: 90px; width: 90px; border-radius: 30%; object-fit: cover;">
+  </div>
+  <div class="member-details" style="flex-grow: 1;">
+    <h3 style="margin-top: 0; margin-bottom: 0.1em; font-size: 1.5em;">Мукабенов Дмитрий</h3>
+    <h4 style="margin-top: 0; margin-bottom: 0; font-size: 1.1em; font-weight: normal;">Разработчик</h4>
+  </div>
+</div>
 
 **Роль:** Техническая реализация проекта, разработка архитектуры мультиагентной системы, интеграция моделей GPT и создание программных компонентов.
 
@@ -64,14 +95,25 @@ featuredImage: "/images/team-banner.jpg"
 -   Тестирование и отладка программного кода.
 -   Техническое решение возникающих проблем и оптимизация производительности.
 
-[![GitHub](/images/github.png)](https://github.com/a1lock)
+<div style="text-align: center; margin-top: 1em; margin-bottom: 1em;">
+  <a href="https://github.com/a1lock" target="_blank" rel="noopener noreferrer" title="GitHub Дмитрия Мукабенова">
+    <img src="/images/github.png" alt="GitHub" style="height: 64px; width: auto; vertical-align: middle;">
+  </a>
+</div>
 
 ---
 
-### Литвинов Георгий Александрович
-#### Аналитик {.role}
+##
 
-![Литвинов Георгий Александрович](/images/member_litvinov_g.jpg)
+<div class="member-block" style="margin-left: 20px; display: flex; align-items: flex-start; gap: 20px; margin-bottom: 2em;">
+  <div class="member-image-container" style="flex-shrink: 0;">
+    <img src="/images/analyst.png" alt="Литвинов Георгий" style="height: 90px; width: 90px; border-radius: 50%; object-fit: cover;">
+  </div>
+  <div class="member-details" style="flex-grow: 1;">
+    <h3 style="margin-top: 0; margin-bottom: 0.1em; font-size: 1.5em;">Литвинов Георгий</h3>
+    <h4 style="margin-top: 0; margin-bottom: 0; font-size: 1.1em; font-weight: normal;">Аналитик</h4>
+  </div>
+</div>
 
 **Роль:** Анализ существующих бизнес-процессов, сбор и формализация требований, исследование рынка, оценка эффективности предлагаемых решений.
 
@@ -86,10 +128,17 @@ featuredImage: "/images/team-banner.jpg"
 
 ---
 
-### Исаев Арслан
-#### Исследователь {.role}
+##
 
-![Исаев Арслан](/images/member_isaev.jpg)
+<div class="member-block" style="margin-left: 20px; display: flex; align-items: flex-start; gap: 20px; margin-bottom: 2em;">
+  <div class="member-image-container" style="flex-shrink: 0;">
+    <img src="/images/researcher.png" alt="Исаев Арслан" style="height: 90px; width: 90px; object-fit: cover; border-radius: 20%">
+  </div>
+  <div class="member-details" style="flex-grow: 1;">
+    <h3 style="margin-top: 0; margin-bottom: 0.1em; font-size: 1.5em;">Исаев Арслан</h3>
+    <h4 style="margin-top: 0; margin-bottom: 0; font-size: 1.1em; font-weight: normal;">Исследователь</h4>
+  </div>
+</div>
 
 **Роль:** Исследование новейших технологий в области МАС и GPT, поиск и анализ релевантных научных статей и практик, оценка применимости различных инструментов ИИ.
 
@@ -108,9 +157,9 @@ featuredImage: "/images/team-banner.jpg"
 
 | Навык                 | Уровень      |
 | --------------------- | ------------ |
-| Стратегическое планирование | ■■■■■■■■■□ |
-| Координация и управление | ■■■■■■■■□□ |
-| Разработка (МАС, Python) | ■■■■■■■■■■ |
-| Бизнес-анализ         | ■■■■■■■■□□ |
-| Исследования (ИИ, GPT) | ■■■■■■■■□□ |
-| Дизайн-мышление       | ■■■■■■■□□□ | 
+| Стратегическое планирование | ■■■■■■□□□□ |
+| Координация и управление | ■■■■■■□□□□ |
+| Разработка (Python) | ■■■■■■□□□□ |
+| Бизнес-анализ         | ■■■■■□□□□□ |
+| Исследования (ИИ, GPT) | ■■■■■■■□□□ |
+| Дизайн-мышление       | ■■■■■■□□□□ | 

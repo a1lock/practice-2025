@@ -15,7 +15,7 @@
       <guid>http://localhost:1313/journal/post-8/</guid>
       
       <description>&lt;h1 id=&#34;оглядываясь-назад-как-мы-координируем-сложный-проект&#34;&gt;Оглядываясь назад: Как мы координируем сложный проект?&lt;/h1&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/team-coordination-reflection.jpg&#34; alt=&#34;Команда обсуждает схему на доске&#34;&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/8post.jpg&#34; alt=&#34;Рефлексия&#34;&gt;
 &lt;em&gt;Обсуждаем успехи и трудности координации разных направлений&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;Прошло полтора месяца активной работы над проектом мойки ковров. Учитывая его комплексность (hardware, software, ИИ/МАС для оптимизации процессов), мы решили провести ретроспективу и обсудить, как нам удается координировать все эти направления.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Что получается хорошо:&lt;/strong&gt;&lt;/p&gt;
@@ -29,15 +29,13 @@
     </item>
     
     <item>
-      <title>Технический вызов: Отладка связи контроллера и &#34;агента&#34; GPT</title>
+      <title>Технический вызов: Отладка связи контроллера и агента GPT</title>
       <link>http://localhost:1313/journal/post-7/</link>
       <pubDate>Wed, 19 Mar 2025 10:00:00 +0300</pubDate>
       
       <guid>http://localhost:1313/journal/post-7/</guid>
       
       <description>&lt;h1 id=&#34;когда-железо-встречается-с-ии-первые-трудности&#34;&gt;Когда &amp;ldquo;железо&amp;rdquo; встречается с ИИ: Первые трудности&lt;/h1&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/hw-sw-debug.jpg&#34; alt=&#34;Паяльник, провода, код на экране&#34;&gt;
-&lt;em&gt;Отладка взаимодействия контроллера STM32 и программных агентов&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;Разработка на стыке hardware и software всегда полна вызовов, а когда добавляется ИИ – становится еще интереснее. На этой неделе мы столкнулись с первыми трудностями при попытке наладить взаимодействие между нашим контроллером STM32 и первыми прототипами программных агентов, включая &amp;ldquo;агента&amp;rdquo;, использующего GPT.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;В чем была проблема?&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Мы хотели реализовать простую функцию: при возникновении ошибки на аппаратном уровне (например, сигнал с датчика тока о заклинивании щетки), контроллер STM32 отправляет код ошибки на сервер, где &amp;ldquo;GPT-агент&amp;rdquo; генерирует понятное для пользователя сообщение об ошибке для вывода на будущий дисплей (Шаг 5 - Индикация ошибок).&lt;/p&gt;</description>
@@ -45,15 +43,17 @@
     </item>
     
     <item>
-      <title>Проектируем &#34;железо&#34; и алгоритмы: STM32, H-мосты и блок-схемы</title>
+      <title>Проектируем железо и алгоритмы: STM32, H-мосты и блок-схемы</title>
       <link>http://localhost:1313/journal/post-6/</link>
       <pubDate>Wed, 12 Mar 2025 10:00:00 +0300</pubDate>
       
       <guid>http://localhost:1313/journal/post-6/</guid>
       
       <description>&lt;h1 id=&#34;от-концепции-к-железу-и-логике&#34;&gt;От концепции к &amp;ldquo;железу&amp;rdquo; и логике&lt;/h1&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/hw-algorithms-design.jpg&#34; alt=&#34;Электронная схема и блок-схема на экране&#34;&gt;
-&lt;em&gt;Проектируем аппаратную часть и продумываем алгоритмы работы&lt;/em&gt;&lt;/p&gt;
+&lt;h2&gt;&lt;/h2&gt;
+&lt;div style=&#34;text-align: center; margin-top: 1em; margin-bottom: 1em;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/images/6post.png&#34; alt=&#34;&#34; style=&#34;height: auto; width: auto; vertical-align: middle; width: auto; height: 450px&#34;&gt;
+&lt;/div&gt;
 &lt;p&gt;Этот спринт был посвящен &amp;ldquo;сердцу&amp;rdquo; и &amp;ldquo;мозгу&amp;rdquo; нашего аппарата: проектированию аппаратной платформы (Шаг 3) и разработке алгоритмов работы (Шаг 4). Параллельно мы думали, как концепции МАС могут помочь структурировать эту работу.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Проектирование аппаратной платформы (Шаг 3):&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
