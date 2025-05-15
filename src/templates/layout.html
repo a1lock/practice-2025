@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %} - practice-2025</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='images/home-button.png') }}"> 
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-left">
+                <a href="{{ url_for('home_page') }}" id="home-link">
+                    <img src="{{ url_for('static', filename='images/home-button.png') }}" alt="Домой" id="home-icon">
+                </a>
+            </div>
+            <div class="nav-center">
+                <h1>{% block header_title %}{{ self.title() }}{% endblock %}</h1>
+            </div>
+            <div class="nav-right">
+                <a href="{{ url_for('list_all_services_page') }}">Сервисы</a>
+                <a href="#footer-contacts">Контакты</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer id="footer-contacts">
+        <h2>Контакты</h2>
+        <p>Telegram: <a href="https://t.me/dontopentheboxx" target="_blank">@dontopentheboxx</a></p>
+        <p>GitHub: <a href="https://github.com/a1lock" target="_blank">a1lock</a></p>
+        <p>Email: <a href="mailto:a1lockteam@a1l.com">a1lockteam@a1l.com</a></p>
+        <p>Телефон: +7 (800) 555-35-35</p>
+        <p>© {% block year %}{{ current_year }}{% endblock %} Ailock team corp./a1l. Все права защищены.</p>
+    </footer>
+</body>
+</html>

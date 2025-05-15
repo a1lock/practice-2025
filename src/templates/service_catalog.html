@@ -1,0 +1,252 @@
+{% extends "layout.html" %}
+
+{% block title %}{{ service_data.name if service_data else "Каталог Медиа"}}{% endblock %}
+{% block header_title %}{{ service_data.name if service_data else "Сервис Каталога Книг и Фильмов" }}{% endblock %}
+
+{% block content %}
+<section class="service-description-page">
+    <h2>Сервис: {{ service_data.name if service_data else "Каталог Книг/Фильмов" }}</h2>
+    {% if service_data and service_data.intro %}
+    <p class="service-intro">{{ service_data.intro }}</p>
+    {% endif %}
+
+    <h3>Описание API эндпоинтов (для разработчиков):</h3>
+    {% if service_data and service_data.endpoints %}
+    <div class="api-endpoints">
+        {% for endpoint in service_data.endpoints %}
+        <div class="endpoint-card">
+            <h4><code>{{ endpoint.method }} {{ endpoint.path }}</code></h4>
+            {% if endpoint.description %}<p>{{ endpoint.description }}</p>{% endif %}
+            {% if endpoint.example_request %}
+            <p><strong>Пример тела запроса (JSON):</strong></p>
+            <pre><code class="language-json">{{ endpoint.example_request | tojson(indent=2) if endpoint.example_request is mapping else endpoint.example_request }}</code></pre>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}<p>Описание API не добавлено.</p>{% endif %}
+</section>
+
+<hr class="separator">
+
+<section class="interactive-catalog">
+    <h2>Медиа каталог:</h2>
+
+    <div class="catalog-form-container">
+        <h3>Добавить новый элемент:</h3>
+        <form id="addItemCatalogForm">
+            <div>
+                <label for="itemType">Тип:</label>
+                <select id="itemType" name="itemType" required>
+                    <option value="book">Книга</option>
+                    <option value="movie">Фильм</option>
+                </select>
+            </div>
+            <div>
+                <label for="itemTitle">Название:</label>
+                <input type="text" id="itemTitle" name="itemTitle" required>
+            </div>
+            <div id="authorDirectorField"> 
+                <label for="itemAuthorDirector" id="authorDirectorLabel">Автор:</label>
+                <input type="text" id="itemAuthorDirector" name="itemAuthorDirector" required>
+            </div>
+            <div>
+                <label for="itemYear">Год (1800-{{ current_year + 10 }}):</label>
+                <input type="number" id="itemYear" name="itemYear" min="1800" max="{{ current_year + 10 }}" required> {# Используем current_year из контекста #}
+            </div>
+             <div>
+                <label for="itemGenre">Жанр (необязательно):</label>
+                <input type="text" id="itemGenre" name="itemGenre">
+            </div>
+            <button type="submit" class="btn btn-add">Добавить в каталог</button>
+        </form>
+        <div id="catalog-form-message" class="form-message"></div>
+    </div>
+
+    <div class="catalog-filter-container">
+        <h3>Фильтровать каталог:</h3>
+        <form id="filterCatalogForm">
+            <input type="text" id="filterTitle" name="title" placeholder="Поиск по названию...">
+            <input type="text" id="filterCreator" name="creator" placeholder="Поиск по автору/режиссеру...">
+            <select id="filterType" name="type">
+                <option value="">Любой тип</option>
+                <option value="book">Книги</option>
+                <option value="movie">Фильмы</option>
+            </select>
+            <input type="number" id="filterYear" name="year" placeholder="Год...">
+            <input type="text" id="filterGenre" name="genre" placeholder="Жанр...">
+            <button type="submit" class="btn btn-action">Применить Фильтр</button>
+            <button type="button" id="resetFilterBtn" class="btn btn-secondary">Сбросить</button>
+        </form>
+    </div>
+    
+    <h3>Список элементов (<span id="catalogItemCount">0</span>):</h3>
+    <div id="catalogList" class="catalog-list-grid">
+        <p class="loading-message">Загрузка каталога...</p>
+    </div>
+</section>
+
+<script>
+(function() {
+    if (!document.getElementById('addItemCatalogForm')) return;
+
+    const addItemForm = document.getElementById('addItemCatalogForm');
+    const itemTypeSelect = document.getElementById('itemType');
+    const itemTitleInput = document.getElementById('itemTitle');
+    //const authorDirectorField = document.getElementById('authorDirectorField'); // Не используется напрямую в JS
+    const authorDirectorLabel = document.getElementById('authorDirectorLabel');
+    const itemAuthorDirectorInput = document.getElementById('itemAuthorDirector');
+    const itemYearInput = document.getElementById('itemYear');
+    const itemGenreInput = document.getElementById('itemGenre');
+    const catalogFormMessage = document.getElementById('catalog-form-message');
+    
+    const filterForm = document.getElementById('filterCatalogForm');
+    // const filterTitleInput = document.getElementById('filterTitle'); // Поля формы фильтра получаем при отправке
+    // const filterCreatorInput = document.getElementById('filterCreator');
+    // const filterTypeSelect = document.getElementById('filterType');
+    // const filterYearInput = document.getElementById('filterYear');
+    // const filterGenreInput = document.getElementById('filterGenre');
+    const resetFilterBtn = document.getElementById('resetFilterBtn');
+
+    const catalogListDiv = document.getElementById('catalogList');
+    const catalogItemCountSpan = document.getElementById('catalogItemCount');
+    
+    const catalogApiBaseUrl = '{{ url_for("catalog_api_get_items") }}';
+
+    function showCatalogFormMessage(message, isError = false) {
+        catalogFormMessage.textContent = message;
+        catalogFormMessage.className = isError ? 'form-message error' : 'form-message success';
+        catalogFormMessage.style.display = 'block';
+        setTimeout(() => {
+            catalogFormMessage.textContent = '';
+            catalogFormMessage.className = 'form-message';
+            catalogFormMessage.style.display = 'none';
+        }, 4000);
+    }
+
+    itemTypeSelect.addEventListener('change', function() {
+        authorDirectorLabel.textContent = (this.value === 'book') ? 'Автор:' : 'Режиссер:';
+        itemAuthorDirectorInput.placeholder = (this.value === 'book') ? 'Имя автора...' : 'Имя режиссера...';
+    });
+
+    async function fetchAndRenderCatalog(queryParams = '') {
+        catalogListDiv.innerHTML = '<p class="loading-message">Загрузка каталога...</p>';
+        catalogItemCountSpan.textContent = '...';
+        try {
+            const response = await fetch(`${catalogApiBaseUrl}${queryParams}`);
+            if (!response.ok) throw new Error(`Ошибка HTTP: ${response.status} ${response.statusText}`);
+            const items = await response.json(); 
+
+            catalogListDiv.innerHTML = '';
+            catalogItemCountSpan.textContent = items ? items.length : 0;
+
+
+            if (!items || items.length === 0) {
+                catalogListDiv.innerHTML = '<p class="no-items-message">В каталоге пока нет элементов или по вашему запросу ничего не найдено.</p>';
+                return;
+            }
+
+            items.forEach(item => {
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'catalog-item-card';
+                
+                let creatorField = '';
+                if (item.type === 'book' && item.author) {
+                    creatorField = `<p><strong>Автор:</strong> ${item.author}</p>`;
+                } else if (item.type === 'movie' && item.director) {
+                    creatorField = `<p><strong>Режиссер:</strong> ${item.director}</p>`;
+                }
+
+                itemDiv.innerHTML = `
+                    <h4>${item.title} (${item.type === 'book' ? 'Книга' : 'Фильм'})</h4>
+                    ${creatorField}
+                    <p><strong>Год:</strong> ${item.year || 'Н/Д'}</p>
+                    <p><strong>Жанр:</strong> ${item.genre || 'Н/Д'}</p>
+                    <p><small>ID: ${item.id}</small></p>
+                `;
+                catalogListDiv.appendChild(itemDiv);
+            });
+
+        } catch (error) {
+            console.error('Ошибка при загрузке каталога:', error);
+            catalogListDiv.innerHTML = `<p class="error-message">Не удалось загрузить каталог: ${error.message}. Попробуйте позже.</p>`;
+            catalogItemCountSpan.textContent = 'Ошибка';
+        }
+    }
+
+    addItemForm.addEventListener('submit', async function(event) {
+        event.preventDefault();
+        const itemData = {
+            type: itemTypeSelect.value,
+            title: itemTitleInput.value.trim(),
+            year: parseInt(itemYearInput.value), // API уже выполняет проверку на число
+            genre: itemGenreInput.value.trim() || "Не указан"
+        };
+
+        if (itemData.type === 'book') {
+            itemData.author = itemAuthorDirectorInput.value.trim();
+        } else {
+            itemData.director = itemAuthorDirectorInput.value.trim();
+        }
+        
+        // Базовая JS валидация, чтобы не отправлять пустые обязательные поля на сервер
+        let isValid = true;
+        if (!itemData.title) { isValid = false; itemTitleInput.style.borderColor = 'red';} else { itemTitleInput.style.borderColor = '#ccc';}
+        if ((itemData.type === 'book' && !itemData.author) || (itemData.type === 'movie' && !itemData.director) ) {
+            isValid = false; itemAuthorDirectorInput.style.borderColor = 'red';
+        } else { itemAuthorDirectorInput.style.borderColor = '#ccc';}
+        if (!itemData.year || isNaN(itemData.year)) { isValid = false; itemYearInput.style.borderColor = 'red';} else {itemYearInput.style.borderColor = '#ccc';}
+
+        if (!isValid) {
+            showCatalogFormMessage('Пожалуйста, заполните все обязательные поля (тип, название, автор/режиссер, год) корректно.', true);
+            return;
+        }
+        
+        try {
+            const response = await fetch(catalogApiBaseUrl, { // POST на тот же базовый URL
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(itemData)
+            });
+            const result = await response.json();
+
+            if (!response.ok) {
+                showCatalogFormMessage(result.error || `Ошибка: ${response.status} ${response.statusText}`, true);
+                throw new Error(result.error || `HTTP error!`);
+            }
+            showCatalogFormMessage(result.message || 'Элемент добавлен в каталог!', false);
+            addItemForm.reset(); 
+            itemTypeSelect.dispatchEvent(new Event('change')); // Обновить метку Автор/Режиссер
+            fetchAndRenderCatalog(); 
+
+        } catch (error) {
+            console.error('Ошибка при добавлении элемента:', error);
+             if (!catalogFormMessage.textContent || catalogFormMessage.style.display === 'none' || catalogFormMessage.classList.contains('success')) {
+                showCatalogFormMessage(`Не удалось добавить элемент: ${error.message}. Попробуйте позже.`, true);
+            }
+        }
+    });
+    
+    filterForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+        const formData = new FormData(filterForm);
+        const params = new URLSearchParams();
+        // Перебираем FormData и добавляем только непустые значения
+        for (const [key, value] of formData.entries()) {
+            if (value && value.trim() !== '') {
+                params.append(key, value.trim());
+            }
+        }
+        fetchAndRenderCatalog('?' + params.toString());
+    });
+
+    resetFilterBtn.addEventListener('click', function() {
+        filterForm.reset();
+        fetchAndRenderCatalog();
+    });
+
+    fetchAndRenderCatalog();
+    itemTypeSelect.dispatchEvent(new Event('change')); 
+})();
+</script>
+{% endblock %}

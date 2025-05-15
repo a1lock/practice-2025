@@ -1,0 +1,128 @@
+{% extends "layout.html" %}
+
+{% block title %}{{ service_data.name if service_data else "Цитаты и Факты"}}{% endblock %}
+{% block header_title %}{{ service_data.name if service_data else "Сервис Цитат и Фактов" }}{% endblock %}
+
+{% block content %}
+<section class="service-description-page">
+    <h2>Сервис: {{ service_data.name if service_data else "Цитаты и Факты" }}</h2>
+    {% if service_data and service_data.intro %}
+    <p class="service-intro">{{ service_data.intro }}</p>
+    {% endif %}
+
+    <h3>Описание API эндпоинтов (для разработчиков):</h3>
+    {% if service_data and service_data.endpoints %}
+    <div class="api-endpoints">
+        {% for endpoint in service_data.endpoints %}
+        <div class="endpoint-card">
+            <h4><code>{{ endpoint.method }} {{ endpoint.path }}</code></h4>
+            {% if endpoint.description %}<p>{{ endpoint.description }}</p>{% endif %}
+            {% if endpoint.example_request %}
+            <p><strong>Пример тела запроса (JSON):</strong></p>
+            <pre><code class="language-json">{{ endpoint.example_request | tojson(indent=2) if endpoint.example_request is mapping else endpoint.example_request }}</code></pre>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}<p>Описание API не добавлено.</p>{% endif %}
+</section>
+
+<hr class="separator">
+
+<section class="interactive-quote">
+    <h2>Получить цитату/факт:</h2>
+    
+    <div class="quote-actions">
+        <button id="getRandomQuoteBtn" class="btn btn-action">Случайная цитата/факт</button>
+    </div>
+
+    <div class="quote-by-id-form">
+        <label for="quoteIdInput">Получить по ID:</label>
+        <input type="number" id="quoteIdInput" min="1" placeholder="Введите ID">
+        <button id="getQuoteByIdBtn" class="btn btn-action">Найти</button>
+    </div>
+    
+    <div id="quote-message" class="form-message"></div>
+    <div id="quoteDisplay" class="quote-display-area" style="display: none;">
+        <blockquote class="quote-text">
+            <p id="quoteTextP"></p>
+            <footer id="quoteAuthorFooter"></footer>
+        </blockquote>
+    </div>
+</section>
+
+<script>
+(function() {
+    if (!document.getElementById('getRandomQuoteBtn')) return;
+
+    const getRandomBtn = document.getElementById('getRandomQuoteBtn');
+    const getByIdBtn = document.getElementById('getQuoteByIdBtn');
+    const quoteIdInput = document.getElementById('quoteIdInput');
+    const quoteDisplayDiv = document.getElementById('quoteDisplay');
+    const quoteTextP = document.getElementById('quoteTextP');
+    const quoteAuthorFooter = document.getElementById('quoteAuthorFooter');
+    const messageDiv = document.getElementById('quote-message');
+
+    // Используем прямые пути, так как url_for здесь не даст особого преимущества для JS
+    const apiUrlRandom = '{{ url_for("quotes_api_get_random") }}';
+    const apiUrlBaseById = '/api/quotes/'; // Изменил путь для консистентности API (см. app.py)
+
+    function showQuoteMessage(text, isError = false) {
+        messageDiv.textContent = text;
+        messageDiv.className = isError ? 'form-message error' : 'form-message success';
+        messageDiv.style.display = 'block';
+        quoteDisplayDiv.style.display = 'none';
+        setTimeout(() => { 
+            messageDiv.textContent = ''; 
+            messageDiv.className = 'form-message';
+            messageDiv.style.display = 'none';
+        }, 4000);
+    }
+
+    function displayQuote(quoteData) {
+        if (quoteData && quoteData.text) { // Добавим проверку
+            quoteTextP.textContent = quoteData.text;
+            quoteAuthorFooter.textContent = `${quoteData.author || 'Неизвестный автор'}`;
+            quoteDisplayDiv.style.display = 'block';
+            messageDiv.style.display = 'none';
+        } else {
+            showQuoteMessage('Получены некорректные данные цитаты.', true);
+        }
+    }
+
+    async function fetchQuote(url) {
+        showQuoteMessage('Загрузка цитаты...', false);
+        try {
+            const response = await fetch(url);
+            const data = await response.json();
+
+            if (!response.ok) {
+                showQuoteMessage(data.error || `Ошибка сервера: ${response.status}`, true);
+                throw new Error(data.error || `HTTP error: ${response.status}`);
+            }
+            displayQuote(data);
+        } catch (error) {
+            console.error('Ошибка при получении цитаты:', error);
+            if (!messageDiv.textContent || messageDiv.style.display === 'none' || messageDiv.classList.contains('success') ) {
+                showQuoteMessage('Не удалось загрузить цитату. Попробуйте еще раз.', true);
+            }
+        }
+    }
+
+    getRandomBtn.addEventListener('click', () => {
+        fetchQuote(apiUrlRandom);
+    });
+
+    getByIdBtn.addEventListener('click', () => {
+        const id = quoteIdInput.value.trim();
+        if (!id || isNaN(parseInt(id)) || parseInt(id) < 1) {
+            showQuoteMessage('Пожалуйста, введите корректный ID (положительное число).', true);
+            return;
+        }
+        fetchQuote(`${apiUrlBaseById}${id}`);
+        quoteIdInput.value = ''; // Очищаем поле после поиска
+    });
+
+})();
+</script>
+{% endblock %}

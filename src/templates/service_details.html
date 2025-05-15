@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block title %}{{ service.name if service else "Описание сервиса"}}{% endblock %}
+
+{% block header_title %}{{ service.name if service else "Описание API сервиса" }}{% endblock %}
+
+{% block content %}
+<section class="service-description-page"> {# Добавил класс для возможной уникальной стилизации #}
+    <h2>Сервис: {{ service.name if service else "Неизвестный сервис" }}</h2>
+    
+    {% if service and service.intro %}
+    <p class="service-intro">{{ service.intro }}</p>
+    {% endif %}
+
+    <h3>Описание API Эндпоинтов:</h3>
+    {% if service and service.endpoints %}
+    <div class="api-endpoints">
+        {% for endpoint in service.endpoints %}
+        <div class="endpoint-card">
+            <h4><code>{{ endpoint.method }} {{ endpoint.path }}</code></h4>
+            {% if endpoint.description %}
+                <p>{{ endpoint.description }}</p>
+            {% endif %}
+            {% if endpoint.example_request %}
+            <p><strong>Пример тела запроса (JSON):</strong></p>
+            <pre><code class="language-json">{{ endpoint.example_request | tojson(indent=2) if endpoint.example_request is mapping else endpoint.example_request }}</code></pre>
+            {% endif %}
+            {% if endpoint.example_response %}
+            <p><strong>Пример ответа (JSON):</strong></p>
+            <pre><code class="language-json">{{ endpoint.example_response | tojson(indent=2) if endpoint.example_response is mapping else endpoint.example_response }}</code></pre>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p>Описание API для этого сервиса пока не добавлено или эндпоинты не определены.</p>
+    {% endif %}
+</section>
+{% endblock %}

@@ -1,0 +1,200 @@
+{% extends "layout.html" %}
+
+{% block title %}{{ service_data.name if service_data else "Список Задач"}}{% endblock %}
+{% block header_title %}{{ service_data.name if service_data else "Список Задач (To-Do List)" }}{% endblock %}
+
+{% block content %}
+<section class="service-description-page">
+    <h2>Сервис: {{ service_data.name if service_data else "Список Задач" }}</h2>
+    {% if service_data and service_data.intro %}
+    <p class="service-intro">{{ service_data.intro }}</p>
+    {% endif %}
+
+    <h3>Описание API эндпоинтов (для разработчиков):</h3>
+    {% if service_data and service_data.endpoints %}
+    <div class="api-endpoints">
+        {% for endpoint in service_data.endpoints %}
+        <div class="endpoint-card">
+            <h4><code>{{ endpoint.method }} {{ endpoint.path }}</code></h4>
+            {% if endpoint.description %}<p>{{ endpoint.description }}</p>{% endif %}
+            {% if endpoint.example_request %}
+            <p><strong>Пример тела запроса (JSON):</strong></p>
+            <pre><code class="language-json">{{ endpoint.example_request | tojson(indent=2) if endpoint.example_request is mapping else endpoint.example_request }}</code></pre>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}<p>Описание API не добавлено.</p>{% endif %}
+</section>
+
+<hr class="separator"> 
+
+<section class="interactive-todo">
+    <h2>Ваш список задач:</h2>
+
+    <div class="todo-form-container">
+        <h3>Добавить новую задачу:</h3>
+        <form id="addTaskForm">
+            <input type="text" id="taskText" name="taskText" placeholder="Введите текст задачи..." required>
+            <button type="submit" class="btn btn-add">Добавить задачу</button>
+        </form>
+        <p id="form-message" class="form-message"></p>
+    </div>
+
+    <h3>Текущие задачи:</h3>
+    <ul id="taskList" class="task-list">
+        <li class="no-tasks-message">Загрузка задач...</li>
+    </ul>
+</section>
+
+<script>
+(function() {
+    if (!document.getElementById('addTaskForm')) { return; }
+
+    const tasksApiBaseUrl = '/api/tasks'; 
+
+    const addTaskForm = document.getElementById('addTaskForm');
+    const taskTextInput = document.getElementById('taskText');
+    const taskListUl = document.getElementById('taskList');
+    const formMessageP = document.getElementById('form-message');
+
+    function showFormMessage(message, isError = false) {
+        formMessageP.textContent = message;
+        formMessageP.className = isError ? 'form-message error' : 'form-message success';
+        formMessageP.style.display = 'block'; 
+        setTimeout(() => { 
+            formMessageP.textContent = ''; 
+            formMessageP.className = 'form-message';
+            formMessageP.style.display = 'none'; 
+        }, 3000);
+    }
+
+    async function fetchAndRenderTasks() {
+        try {
+            const response = await fetch(tasksApiBaseUrl);
+            if (!response.ok) {
+                throw new Error(`Ошибка HTTP: ${response.status} ${response.statusText}`);
+            }
+            const data = await response.json();
+            const tasks = data.tasks || [];
+
+            taskListUl.innerHTML = ''; 
+
+            if (tasks.length === 0) {
+                const li = document.createElement('li');
+                li.className = 'no-tasks-message';
+                li.textContent = 'Задач пока нет. Добавьте первую!';
+                taskListUl.appendChild(li);
+                return;
+            }
+
+            tasks.forEach(task => {
+                const li = document.createElement('li');
+                li.className = `task-item ${task.done ? 'done' : ''}`;
+                li.dataset.taskId = task.id;
+
+                const taskTextSpan = document.createElement('span');
+                taskTextSpan.className = 'task-text-content';
+                taskTextSpan.textContent = task.text;
+                
+                const actionsDiv = document.createElement('div');
+                actionsDiv.className = 'task-actions';
+
+                const toggleDoneButton = document.createElement('button');
+                toggleDoneButton.textContent = task.done ? 'Не выполнено' : 'Выполнено';
+                toggleDoneButton.className = `btn btn-toggle ${task.done ? 'btn-undo' : 'btn-done'}`;
+                toggleDoneButton.addEventListener('click', () => toggleTaskDone(task.id, !task.done));
+                
+                const deleteButton = document.createElement('button');
+                deleteButton.textContent = 'Удалить';
+                deleteButton.className = 'btn btn-delete';
+                deleteButton.addEventListener('click', () => deleteTask(task.id));
+
+                actionsDiv.appendChild(toggleDoneButton);
+                actionsDiv.appendChild(deleteButton);
+
+                li.appendChild(taskTextSpan);
+                li.appendChild(actionsDiv);
+                taskListUl.appendChild(li);
+            });
+        } catch (error) {
+            console.error('Ошибка при загрузке задач:', error);
+            taskListUl.innerHTML = `<li class="error-message">Не удалось загрузить задачи: ${error.message}. Пожалуйста, попробуйте позже.</li>`;
+        }
+    }
+
+    addTaskForm.addEventListener('submit', async (event) => {
+        event.preventDefault(); 
+        const text = taskTextInput.value.trim();
+        if (!text) {
+            showFormMessage('Текст задачи не может быть пустым!', true);
+            return;
+        }
+
+        try {
+            const response = await fetch(tasksApiBaseUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ text: text }),
+            });
+            
+            const result = await response.json(); 
+
+            if (!response.ok) { 
+                showFormMessage(result.error || `Ошибка: ${response.status}`, true);
+                throw new Error(result.error || `Ошибка HTTP: ${response.status} ${response.statusText}`);
+            }
+            
+            showFormMessage(result.message || 'Задача добавлена!', false);
+            taskTextInput.value = ''; 
+            fetchAndRenderTasks(); 
+        } catch (error) {
+            console.error('Ошибка при добавлении задачи:', error);
+            if (!formMessageP.textContent || formMessageP.style.display === 'none' || formMessageP.classList.contains('success')) {
+                 showFormMessage(`Не удалось добавить задачу: ${error.message}. Попробуйте позже.`, true);
+            }
+        }
+    });
+
+    async function toggleTaskDone(taskId, newDoneStatus) {
+        try {
+            const response = await fetch(`${tasksApiBaseUrl}/${taskId}`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ done: newDoneStatus }),
+            });
+
+            if (!response.ok) {
+                const errorData = await response.json().catch(() => ({ error: `Ошибка HTTP: ${response.status} ${response.statusText}` }));
+                throw new Error(errorData.error);
+            }
+            fetchAndRenderTasks();
+        } catch (error) {
+            console.error(`Ошибка при изменении статуса задачи ${taskId}:`, error);
+            alert(`Не удалось обновить задачу: ${error.message}`);
+        }
+    }
+
+    async function deleteTask(taskId) {
+        if (!confirm('Вы уверены, что хотите удалить эту задачу?')) {
+            return;
+        }
+        try {
+            const response = await fetch(`${tasksApiBaseUrl}/${taskId}`, {
+                method: 'DELETE',
+            });
+            if (!response.ok) {
+                const errorData = await response.json().catch(() => ({ error: `Ошибка HTTP: ${response.status} ${response.statusText}` }));
+                throw new Error(errorData.error);
+            }
+            fetchAndRenderTasks(); 
+        } catch (error) {
+            console.error(`Ошибка при удалении задачи ${taskId}:`, error);
+            alert(`Не удалось удалить задачу: ${error.message}`);
+        }
+    }
+    
+    fetchAndRenderTasks();
+})();
+</script>
+{% endblock %}

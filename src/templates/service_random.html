@@ -1,0 +1,206 @@
+{% extends "layout.html" %}
+
+{% block title %}{{ service_data.name if service_data else "Генератор Данных"}}{% endblock %}
+{% block header_title %}{{ service_data.name if service_data else "Сервис Генерации Случайных Данных" }}{% endblock %}
+
+{% block content %}
+<section class="service-description-page">
+    <h2>Сервис: {{ service_data.name if service_data else "Генератор Случайных Чисел/Паролей" }}</h2>
+    {% if service_data and service_data.intro %}
+    <p class="service-intro">{{ service_data.intro }}</p>
+    {% endif %}
+
+    <h3>Описание API эндпоинтов (для разработчиков):</h3>
+    {% if service_data and service_data.endpoints %}
+    <div class="api-endpoints">
+        {% for endpoint in service_data.endpoints %}
+        <div class="endpoint-card">
+            <h4><code>{{ endpoint.method }} {{ endpoint.path }}</code></h4>
+            {% if endpoint.description %}<p>{{ endpoint.description }}</p>{% endif %}
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}<p>Описание API не добавлено.</p>{% endif %}
+</section>
+
+<hr class="separator">
+
+<section class="interactive-random">
+    <h2>Генератор:</h2>
+
+    <div class="random-generator-container">
+        <div class="generator-section">
+            <h3>Случайное Число:</h3>
+            <form id="randomNumberForm">
+                <div>
+                    <label for="randNumMin">Минимум (включительно):</label>
+                    <input type="number" id="randNumMin" name="min" value="0">
+                </div>
+                <div>
+                    <label for="randNumMax">Максимум (включительно):</label>
+                    <input type="number" id="randNumMax" name="max" value="100">
+                </div>
+                <button type="submit" class="btn btn-action">Сгенерировать Число</button>
+            </form>
+            <div id="randomNumberResult" class="random-result-display" style="display: none;"></div>
+        </div>
+
+        <div class="generator-section">
+            <h3>Случайный пароль:</h3>
+            <form id="randomPasswordForm">
+                <div>
+                    <label for="passLength">Длина пароля (6-128):</label>
+                    <input type="number" id="passLength" name="length" value="12" min="6" max="128">
+                </div>
+                <div>
+                    <label for="useSymbols">Использовать спецсимволы (!@#...):</label>
+                    <input type="checkbox" id="useSymbols" name="use_symbols" value="true" checked>
+                </div>
+                <button type="submit" class="btn btn-action">Сгенерировать пароль</button>
+            </form>
+            <div id="randomPasswordResult" class="random-result-display" style="display: none;">
+                 <input type="text" id="generatedPasswordOutput" readonly>
+                 <button type="button" id="copyPasswordBtn" class="btn btn-copy btn-small">Копировать</button>
+            </div>
+        </div>
+         <div id="random-message" class="form-message"></div> <!-- Общее сообщение для генератора -->
+    </div>
+</section>
+
+<script>
+(function() {
+    if (!document.getElementById('randomNumberForm') && !document.getElementById('randomPasswordForm')) return;
+
+    const randNumForm = document.getElementById('randomNumberForm');
+    const randNumResultDiv = document.getElementById('randomNumberResult');
+
+    const randPassForm = document.getElementById('randomPasswordForm');
+    const randPassResultDiv = document.getElementById('randomPasswordResult');
+    const genPassOutput = document.getElementById('generatedPasswordOutput');
+    const copyPassBtn = document.getElementById('copyPasswordBtn');
+    
+    const messageDiv = document.getElementById('random-message'); // Общее сообщение
+
+    const apiUrlRandomNum = '{{ url_for("random_data_api_get_number") }}';
+    const apiUrlRandomPass = '{{ url_for("random_data_api_get_password") }}';
+
+    function showRandomMessage(text, isError = false, targetResultDiv = null) {
+        messageDiv.textContent = text;
+        messageDiv.className = isError ? 'form-message error' : 'form-message success';
+        messageDiv.style.display = 'block';
+        if (targetResultDiv) targetResultDiv.style.display = 'none';
+
+        if (isError) {
+            setTimeout(() => {
+                messageDiv.textContent = '';
+                messageDiv.className = 'form-message';
+                messageDiv.style.display = 'none';
+            }, 4000);
+        }
+    }
+    
+    function displayGeneratedResult(element, textContent, makeVisible = true, isPasswordInput = false) {
+        if (isPasswordInput) {
+            element.value = textContent;
+        } else {
+            element.textContent = textContent;
+        }
+         // Для пароля родительский div содержит и input и кнопку, его нужно показать
+        const parentDisplayElement = isPasswordInput ? element.parentElement : element;
+        parentDisplayElement.style.display = makeVisible ? (isPasswordInput ? 'flex' : 'block') : 'none';
+        
+        if (makeVisible) { 
+             messageDiv.style.display = 'none'; messageDiv.textContent = '';
+        }
+    }
+
+
+    if(randNumForm) {
+        randNumForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            // Используем FormData для GET запросов, это проще для параметров URL
+            const formData = new FormData(randNumForm);
+            const params = new URLSearchParams(formData).toString();
+            
+            showRandomMessage('Генерация числа...', false, randNumResultDiv);
+
+            try {
+                const response = await fetch(`${apiUrlRandomNum}?${params}`);
+                const data = await response.json();
+
+                if (!response.ok) {
+                    showRandomMessage(data.error || `Ошибка: ${response.status}`, true, randNumResultDiv);
+                    throw new Error(data.error || `HTTP Error`);
+                }
+                displayGeneratedResult(randNumResultDiv, `Случайное число: ${data.random_number}`);
+            } catch (error) {
+                console.error('Ошибка генерации числа:', error);
+                 if (!messageDiv.textContent || messageDiv.style.display === 'none' || messageDiv.classList.contains('success')) {
+                    showRandomMessage('Не удалось сгенерировать число. Проверьте параметры.', true, randNumResultDiv);
+                }
+            }
+        });
+    }
+
+    if(randPassForm) {
+        randPassForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const formData = new FormData(randPassForm);
+            const params = new URLSearchParams();
+            params.append('length', formData.get('length'));
+            // FormData для чекбокса вернет "true" если он checked, или null если не checked.
+            // API ожидает строку "true" или "false" для use_symbols.
+            params.append('use_symbols', formData.get('use_symbols') === 'true' ? 'true' : 'false');
+            
+            showRandomMessage('Генерация пароля...', false, randPassResultDiv);
+
+            try {
+                const response = await fetch(`${apiUrlRandomPass}?${params.toString()}`);
+                const data = await response.json();
+
+                if (!response.ok) {
+                    showRandomMessage(data.error || `Ошибка: ${response.status}`, true, randPassResultDiv);
+                    throw new Error(data.error || `HTTP Error`);
+                }
+                displayGeneratedResult(genPassOutput, data.password, true, true);
+
+            } catch (error) {
+                console.error('Ошибка генерации пароля:', error);
+                if (!messageDiv.textContent || messageDiv.style.display === 'none' || messageDiv.classList.contains('success')) {
+                     showRandomMessage('Не удалось сгенерировать пароль. Проверьте параметры.', true, randPassResultDiv);
+                }
+            }
+        });
+
+        copyPassBtn.addEventListener('click', () => {
+            genPassOutput.select(); 
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                 navigator.clipboard.writeText(genPassOutput.value).then(() => {
+                    showRandomMessage('Пароль скопирован!', false);
+                 }).catch(err => {
+                    console.error('Ошибка копирования (Clipboard API): ', err);
+                    showRandomMessage('Не удалось скопировать. Пожалуйста, скопируйте вручную.', true);
+                 });
+            } else {
+                try {
+                    const successful = document.execCommand('copy');
+                    if (successful) {
+                        showRandomMessage('Пароль скопирован!', false);
+                    } else {
+                         showRandomMessage('Не удалось скопировать. Скопируйте вручную.', true);
+                    }
+                } catch (err) {
+                     console.error('Ошибка копирования (execCommand): ', err);
+                     showRandomMessage('Не удалось скопировать. Скопируйте вручную.', true);
+                }
+            }
+            if (window.getSelection) { // Снимаем выделение
+                window.getSelection().removeAllRanges();
+            } else if (document.selection) { // Для IE
+                document.selection.empty();
+            }
+        });
+    }
+})();
+</script>
+{% endblock %}

@@ -1,0 +1,313 @@
+{% extends "layout.html" %}
+
+{% block title %}{{ service_data.name if service_data else "Калькулятор"}}{% endblock %}
+{% block header_title %}{{ service_data.name if service_data else "Интерактивный калькулятор" }}{% endblock %}
+
+{% block content %}
+<section class="service-description-page">
+    <h2>Сервис: {{ service_data.name if service_data else "Простой калькулятор" }}</h2>
+    {% if service_data and service_data.intro %}
+    <p class="service-intro">{{ service_data.intro }}</p>
+    {% endif %}
+
+    <h3>Описание API эндпоинтов (для разработчиков):</h3>
+    {% if service_data and service_data.endpoints %}
+    <div class="api-endpoints">
+        {% for endpoint in service_data.endpoints %}
+        <div class="endpoint-card">
+            <h4><code>{{ endpoint.method }} {{ endpoint.path }}</code></h4>
+            {% if endpoint.description %}<p>{{ endpoint.description }}</p>{% endif %}
+            {% if endpoint.example_request %}
+            <p><strong>Пример тела запроса (JSON):</strong></p>
+            <pre><code class="language-json">{{ endpoint.example_request | tojson(indent=2) if endpoint.example_request is mapping else endpoint.example_request }}</code></pre>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}<p>Описание API не добавлено.</p>{% endif %}
+</section>
+
+<hr class="separator">
+
+<section class="interactive-calculator-ui">
+    <h2>Калькулятор:</h2>
+    <div class="calculator-container">
+        <div id="calculatorDisplay" class="calculator-display">0</div>
+        <div class="calculator-buttons-grid">
+            <button class="calc-btn function" data-action="clear">AC</button>
+            <button class="calc-btn function" data-action="sign">+/-</button>
+            <button class="calc-btn function" data-action="percent">%</button>
+            <button class="calc-btn operator" data-operator="/">/</button>
+
+            <button class="calc-btn number" data-value="7">7</button>
+            <button class="calc-btn number" data-value="8">8</button>
+            <button class="calc-btn number" data-value="9">9</button>
+            <button class="calc-btn operator" data-operator="*">*</button>
+
+            <button class="calc-btn number" data-value="4">4</button>
+            <button class="calc-btn number" data-value="5">5</button>
+            <button class="calc-btn number" data-value="6">6</button>
+            <button class="calc-btn operator" data-operator="-">-</button>
+
+            <button class="calc-btn number" data-value="1">1</button>
+            <button class="calc-btn number" data-value="2">2</button>
+            <button class="calc-btn number" data-value="3">3</button>
+            <button class="calc-btn operator" data-operator="+">+</button>
+
+            <button class="calc-btn number zero" data-value="0">0</button>
+            <button class="calc-btn number" data-value=".">.</button>
+            <button class="calc-btn operator equals" data-action="calculate">=</button>
+        </div>
+        <div id="calculator-ui-message" class="form-message"></div>
+    </div>
+</section>
+
+<script>
+(function() {
+    const display = document.getElementById('calculatorDisplay');
+    const buttonsGrid = document.querySelector('.calculator-buttons-grid');
+    const messageDiv = document.getElementById('calculator-ui-message');
+    
+    if (!display || !buttonsGrid) {
+        console.warn("Элементы калькулятора не найдены, UI не будет инициализирован.");
+        return;
+    }
+
+    const apiUrlCalculate = '{{ url_for("calculator_api_process") }}';
+
+    let currentInput = '0'; // Текущее вводимое значение или результат
+    let previousInput = '';  // Предыдущее значение (первый операнд)
+    let selectedOperator = null; // Выбранный оператор
+    let shouldResetDisplay = false; // Флаг для сброса дисплея после оператора или =
+
+    function updateDisplay() {
+        // Ограничим длину вывода на дисплей для лучшего вида
+        const maxLength = 14; 
+        let displayText = currentInput;
+        if (displayText.length > maxLength) {
+            // Попробуем научную нотацию для очень больших/маленьких чисел
+            try {
+                const num = parseFloat(displayText);
+                if (Math.abs(num) > 1e13 || (Math.abs(num) < 1e-5 && num !== 0) ) {
+                    displayText = num.toExponential(maxLength - 6); // -6 для "e+XX"
+                } else {
+                     displayText = displayText.substring(0, maxLength);
+                }
+            } catch(e) {
+                 displayText = displayText.substring(0, maxLength);
+            }
+        }
+        display.textContent = displayText;
+    }
+
+    function showCalculatorMessage(message, isError = false) {
+        messageDiv.textContent = message;
+        messageDiv.className = isError ? 'form-message error' : 'form-message success';
+        messageDiv.style.display = 'block';
+        setTimeout(() => {
+            messageDiv.textContent = '';
+            messageDiv.className = 'form-message';
+            messageDiv.style.display = 'none';
+        }, 3000);
+    }
+
+    function clearAll() {
+        currentInput = '0';
+        previousInput = '';
+        selectedOperator = null;
+        shouldResetDisplay = false;
+        updateDisplay();
+        messageDiv.style.display = 'none';
+    }
+
+    function handleNumberClick(value) {
+        if (shouldResetDisplay) {
+            currentInput = '0'; // Начинаем новый ввод
+            shouldResetDisplay = false;
+        }
+        if (value === '.' && currentInput.includes('.')) return; // Только одна точка
+        if (currentInput === '0' && value !== '.') {
+            currentInput = value;
+        } else {
+             if (currentInput.length < 15) { // Ограничение на длину ввода
+                currentInput += value;
+            }
+        }
+        updateDisplay();
+    }
+
+    function handleOperatorClick(nextOperatorSymbol) { // ВАЖНО: nextOperatorSymbol - это "+", "-", "*", или "/"
+        console.log("Operator clicked (Symbol Variant):", nextOperatorSymbol, "| currentInput:", currentInput, "| previousInput:", previousInput, "| selectedOperator:", selectedOperator, "| shouldResetDisplay:", shouldResetDisplay);
+        
+        // Логика для цепочки операций (например, 5 + 3 - 2)
+        // Если уже есть выбранный оператор, предыдущее число, И мы не только что сбросили дисплей 
+        // (т.е. пользователь ввел второе число для предыдущей операции), И текущий ввод не ошибка
+        if (selectedOperator && previousInput !== '' && !shouldResetDisplay && currentInput !== "Error") { 
+            console.log("Chained operation: performing previous calculation first (Symbol Variant).");
+            performCalculation(); // Выполняем предыдущее вычисление
+            // После performCalculation():
+            // currentInput будет содержать результат предыдущего вычисления
+            // previousInput и selectedOperator будут сброшены (null)
+            
+            // Теперь, результат предыдущего вычисления (который в currentInput) 
+            // становится первым операндом (previousInput) для НОВОЙ операции (nextOperatorSymbol)
+            previousInput = currentInput; 
+            selectedOperator = nextOperatorSymbol; // Устанавливаем НОВЫЙ символ оператора
+            shouldResetDisplay = true; // Следующий ввод цифр начнет новое число
+            console.log("After chained calc (Symbol Variant): previousInput:", previousInput, "| selectedOperator:", selectedOperator);
+            return; // Выходим, чтобы не выполнить код ниже, который для первого оператора
+        }
+
+        // Если это первая операция в цепочке, или после "=", или после AC
+        if (currentInput !== "Error") { // Сохраняем текущее значение на дисплее как первый операнд
+            previousInput = currentInput;
+        }
+        selectedOperator = nextOperatorSymbol; // Сохраняем СИМВОЛ нажатой операции
+        shouldResetDisplay = true; // Готовимся к вводу второго операнда
+        console.log("Operator set (Symbol Variant): previousInput:", previousInput, "| selectedOperator:", selectedOperator);
+    }
+
+
+    async function performCalculation() {
+        console.log("--- performCalculation START (Symbol Variant) ---");
+        console.log("currentInput:", currentInput, "previousInput:", previousInput, "selectedOperator (should be symbol):", selectedOperator);
+
+        // Проверяем, что все готово для вычисления
+        if (!selectedOperator || previousInput === '' || currentInput === "Error") {
+            console.log("Calculation prerequisites not met. Operator, previousInput missing, or currentInput is Error.");
+            if (currentInput === "Error") {
+                 showCalculatorMessage("Ошибка в предыдущем вычислении. Очистите (AC).", true);
+            }
+            return;
+        }
+
+        const num1 = parseFloat(previousInput);
+        const num2 = parseFloat(currentInput);
+
+        console.log("num1:", num1, "num2:", num2);
+
+        if (isNaN(num1) || isNaN(num2)) {
+            console.error("Error: num1 or num2 is NaN in performCalculation (Symbol Variant)");
+            showCalculatorMessage("Ошибка ввода чисел", true);
+            currentInput = "Error";
+            updateDisplay();
+            return;
+        }
+
+        let apiOperation; // Эта переменная будет содержать "add", "subtract", и т.д. для API
+        // Преобразуем СИМВОЛ из selectedOperator в псевдоним для API
+        switch (selectedOperator) { 
+            case '+': 
+                apiOperation = 'add'; 
+                break;
+            case '-': 
+                apiOperation = 'subtract'; 
+                break;
+            case '*': 
+                apiOperation = 'multiply'; 
+                break;
+            case '/': 
+                apiOperation = 'divide'; 
+                break;
+            default: 
+                console.error("Unknown SYMBOL operator for API conversion:", selectedOperator);
+                showCalculatorMessage(`Внутренняя ошибка: неизвестный символ оператора '${selectedOperator}'.`, true);
+                currentInput = "Error";
+                updateDisplay();
+                return; 
+        }
+        console.log("Converted to apiOperation:", apiOperation);
+
+        // Убираем предыдущее сообщение (особенно "Вычисление...")
+        messageDiv.style.display = 'none'; 
+        messageDiv.textContent = '';
+        
+        showCalculatorMessage("Вычисление...", false);
+
+        try {
+            console.log("Sending API request to:", apiUrlCalculate, "with payload:", { num1: num1, num2: num2, operation: apiOperation });
+            const response = await fetch(apiUrlCalculate, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ num1: num1, num2: num2, operation: apiOperation }) // Отправляем "add", "subtract", и т.д.
+            });
+            console.log("API Response Status:", response.status);
+            
+            const data = await response.json();
+            console.log("API Response Data:", data);
+
+            if (!response.ok) {
+                showCalculatorMessage(data.error || `Ошибка сервера ${response.status}`, true);
+                currentInput = "Error";
+                updateDisplay();
+                throw new Error(data.error || `HTTP Error ${response.status}`);
+            }
+            
+            messageDiv.style.display = 'none'; 
+            currentInput = String(data.result); 
+            previousInput = ''; // Важно сбросить для нового цикла
+            selectedOperator = null; // Важно сбросить для нового цикла
+            shouldResetDisplay = true; 
+            updateDisplay();
+            console.log("Calculation successful, new currentInput:", currentInput);
+
+        } catch (error) {
+            console.error("Ошибка вычисления через API (Symbol Variant):", error);
+            if (!messageDiv.textContent || messageDiv.style.display === 'none' || messageDiv.classList.contains('success')) {
+                 showCalculatorMessage("Ошибка сети или внутренняя ошибка скрипта.", true);
+            }
+            currentInput = "Error";
+            updateDisplay();
+        }
+        console.log("--- performCalculation END (Symbol Variant) ---");
+    }
+
+
+
+    function handleFunctionClick(action) {
+        switch (action) {
+            case 'clear':
+                clearAll();
+                break;
+            case 'sign':
+                if (currentInput !== '0' && currentInput !== "Error") {
+                    currentInput = String(parseFloat(currentInput) * -1);
+                    updateDisplay();
+                }
+                break;
+            case 'percent':
+                if (currentInput !== "Error") {
+                    currentInput = String(parseFloat(currentInput) / 100);
+                    shouldResetDisplay = true; // Поведение процента часто такое
+                    updateDisplay();
+                }
+                break;
+            case 'calculate':
+                performCalculation();
+                break;
+        }
+    }
+
+
+    buttonsGrid.addEventListener('click', (event) => {
+        const target = event.target;
+        if (!target.matches('button.calc-btn')) return; // Клик не по кнопке калькулятора
+
+        const value = target.dataset.value;
+        const operator = target.dataset.operator;
+        const action = target.dataset.action;
+
+        if (value) { // Нажата цифра или точка
+            handleNumberClick(value);
+        } else if (operator) { // Нажат оператор (+, -, *, /)
+             if (currentInput !== "Error") handleOperatorClick(operator);
+        } else if (action) { // Нажата функциональная кнопка (AC, =, +/-, %)
+            handleFunctionClick(action);
+        }
+    });
+
+    // Инициализация дисплея
+    updateDisplay();
+})();
+</script>
+{% endblock %}

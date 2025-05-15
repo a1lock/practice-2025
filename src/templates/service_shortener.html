@@ -1,0 +1,150 @@
+{% extends "layout.html" %}
+
+{% block title %}{{ service_data.name if service_data else "Сокращатель URL"}}{% endblock %}
+{% block header_title %}{{ service_data.name if service_data else "Сервис Сокращения URL" }}{% endblock %}
+
+{% block content %}
+<section class="service-description-page">
+    <h2>Сервис: {{ service_data.name if service_data else "Сокращатель URL" }}</h2>
+    {% if service_data and service_data.intro %}
+    <p class="service-intro">{{ service_data.intro }}</p>
+    {% endif %}
+
+    <h3>Описание API эндпоинтов (для разработчиков):</h3>
+    {% if service_data and service_data.endpoints %}
+    <div class="api-endpoints">
+        {% for endpoint in service_data.endpoints %}
+        <div class="endpoint-card">
+            <h4><code>{{ endpoint.method }} {{ endpoint.path }}</code></h4>
+            {% if endpoint.description %}<p>{{ endpoint.description }}</p>{% endif %}
+            {% if endpoint.example_request %}
+            <p><strong>Пример тела запроса (JSON):</strong></p>
+            <pre><code class="language-json">{{ endpoint.example_request | tojson(indent=2) if endpoint.example_request is mapping else endpoint.example_request }}</code></pre>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}<p>Описание API для этого сервиса пока не добавлено.</p>{% endif %}
+</section>
+
+<hr class="separator">
+
+<section class="interactive-shortener">
+    <h2>Сократить URL:</h2>
+    <div class="shortener-form-container">
+        <form id="shortenUrlForm">
+            <label for="longUrlInput">Введите длинный URL для сокращения:</label>
+            <input type="url" id="longUrlInput" name="longUrlInput" placeholder="https://www.example.com/очень/длинная/ссылка..." required>
+            <button type="submit" class="btn btn-action">Сократить</button>
+        </form>
+        <div id="shortener-message" class="form-message"></div>
+        <div id="resultContainer" class="shortener-result" style="display: none;">
+            <h4>Результат:</h4>
+            <p><strong>Оригинальный URL:</strong> <span id="originalUrlSpan"></span></p>
+            <p><strong>Короткий URL:</strong> <a id="shortUrlLink" href="#" target="_blank"></a></p>
+            <button id="copyShortUrlButton" class="btn btn-copy">Копировать короткий URL</button>
+        </div>
+    </div>
+</section>
+
+<script>
+(function() {
+    if (!document.getElementById('shortenUrlForm')) return;
+
+    const shortenForm = document.getElementById('shortenUrlForm');
+    const longUrlInput = document.getElementById('longUrlInput');
+    const messageDiv = document.getElementById('shortener-message');
+    const resultContainer = document.getElementById('resultContainer');
+    const originalUrlSpan = document.getElementById('originalUrlSpan');
+    const shortUrlLink = document.getElementById('shortUrlLink');
+    const copyButton = document.getElementById('copyShortUrlButton');
+
+    // Используем url_for, если это API эндпоинт, управляемый Flask напрямую,
+    // но для простоты можно использовать и прямой путь, если он не меняется.
+    const apiUrlShorten = '{{ url_for("url_shortener_api_create") }}';
+ 
+
+    function showShortenerMessage(message, isError = false) {
+        messageDiv.textContent = message;
+        messageDiv.className = isError ? 'form-message error' : 'form-message success';
+        messageDiv.style.display = 'block';
+        setTimeout(() => { 
+            messageDiv.textContent = ''; 
+            messageDiv.className = 'form-message';
+            messageDiv.style.display = 'none';
+        }, 4000);
+    }
+
+    shortenForm.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const longUrl = longUrlInput.value.trim();
+        if (!longUrl) {
+            showShortenerMessage('Пожалуйста, введите URL.', true);
+            return;
+        }
+        try {
+            new URL(longUrl); // Простая проверка на валидность URL
+        } catch (_) {
+            showShortenerMessage('Пожалуйста, введите корректный URL.', true);
+            return;
+        }
+
+        resultContainer.style.display = 'none'; 
+        showShortenerMessage('Обработка...', false);
+
+        try {
+            const response = await fetch(apiUrlShorten, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ long_url: longUrl })
+            });
+            const data = await response.json();
+
+            if (!response.ok) {
+                showShortenerMessage(data.error || `Ошибка сервера: ${response.status}`, true);
+                throw new Error(data.error || `HTTP error! status: ${response.status}`);
+            }
+
+            showShortenerMessage(data.message || 'URL успешно сокращен!', false);
+            originalUrlSpan.textContent = data.original_url;
+            shortUrlLink.href = data.short_url;
+            shortUrlLink.textContent = data.short_url;
+            resultContainer.style.display = 'block';
+            //longUrlInput.value = ''; // Можно раскомментировать, если нужно очищать поле
+
+        } catch (error) {
+            console.error('Ошибка при сокращении URL:', error);
+            if (!messageDiv.textContent || messageDiv.style.display === 'none' || messageDiv.classList.contains('success')) {
+                showShortenerMessage('Не удалось сократить URL. Попробуйте позже.', true);
+            }
+        }
+    });
+
+    copyButton.addEventListener('click', () => {
+        const urlToCopy = shortUrlLink.href;
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(urlToCopy).then(() => {
+                showShortenerMessage('Короткий URL скопирован в буфер обмена!', false);
+            }).catch(err => {
+                console.error('Ошибка копирования (Clipboard API): ', err);
+                showShortenerMessage('Не удалось скопировать URL. Скопируйте вручную.', true);
+            });
+        } else { // Fallback для старых браузеров или HTTP
+            try {
+                const textArea = document.createElement("textarea");
+                textArea.value = urlToCopy;
+                document.body.appendChild(textArea);
+                textArea.focus();
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                showShortenerMessage('Короткий URL скопирован в буфер обмена!', false);
+            } catch (err) {
+                 console.error('Ошибка копирования (execCommand): ', err);
+                 showShortenerMessage('Не удалось скопировать URL. Пожалуйста, скопируйте вручную.', true);
+            }
+        }
+    });
+})();
+</script>
+{% endblock %}
