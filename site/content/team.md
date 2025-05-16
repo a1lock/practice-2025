@@ -5,7 +5,6 @@ draft: false
 menu:
   main:
     weight: 20
-featuredImage: "/images/team-banner.jpg"
 ---
 
 ## Команда проекта

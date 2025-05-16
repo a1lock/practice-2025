@@ -5,7 +5,6 @@ draft: false
 menu:
   main:
     weight: 40
-featuredImage: "/images/resources-banner.jpg"
 ---
 
 ## Полезные ресурсы

@@ -5,7 +5,6 @@ draft: false
 menu:
   main:
     weight: 10
-featuredImage: "/images/about-banner.jpg"
 ---
 
 # Перестройка бизнес-процессов на базе мультиагентных систем с GPT
