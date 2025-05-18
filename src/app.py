@@ -764,4 +764,4 @@ if __name__ == '__main__':
     # ЗАМЕНИТЬ: Для реального развертывания (production) следует использовать
     #          более производительный и безопасный WSGI-сервер, например, Gunicorn или uWSGI.
     #          Пример запуска с Gunicorn: `gunicorn -w 4 -b 0.0.0.0:5001 app:app`
-    app.run(host='0.0.0.0', port=5001, debug=True)
+    app.run(host='127.0.0.1', port=5001, debug=True)
