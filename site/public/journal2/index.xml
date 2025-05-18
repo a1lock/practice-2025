@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Отчеты on Перестроение бизнес процессов</title>
+    <link>http://localhost:1313/journal2/</link>
+    <description>Recent content in Отчеты on Перестроение бизнес процессов</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 20 Nov 2023 10:00:00 +0300</lastBuildDate><atom:link href="http://localhost:1313/journal2/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Вариативная часть</title>
+      <link>http://localhost:1313/journal2/post-2/</link>
+      <pubDate>Sun, 11 May 2025 10:00:00 +0300</pubDate>
+      
+      <guid>http://localhost:1313/journal2/post-2/</guid>
+      
+      <description>&lt;h2 id=&#34;1-введение-и-общая-концепция-проекта&#34;&gt;1. Введение и общая концепция проекта&lt;/h2&gt;
+&lt;p&gt;&amp;ldquo;МногоСервисный Веб-портал&amp;rdquo; представляет собой веб-приложение, реализованное на языке Python с использованием микрофреймворка Flask. Основной целью проекта является создание единой платформы, предоставляющей пользователям доступ к набору разнообразных онлайн-инструментов и API-сервисов. Изначальная концепция предполагала постепенное наращивание функциональности, начиная с базовых утилит и двигаясь к более сложным решениям.&lt;/p&gt;
+&lt;h2&gt;&lt;/h2&gt;
+&lt;div style=&#34;text-align: center; margin-top: 1em; margin-bottom: 1em;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/images/var1.png&#34; alt=&#34;aim&#34; style=&#34;height: auto; width: auto; vertical-align: middle;&#34;&gt;
+&lt;/div&gt;
+&lt;h2&gt;&lt;/h2&gt;
+&lt;p&gt;Ключевая идея заключается в предоставлении как интерактивных веб-интерфейсов для непосредственного использования сервисов обычными пользователями, так и документированных API-эндпоинтов для разработчиков, желающих интегрировать функциональность портала в собственные приложения.&lt;/p&gt;</description>
+      
+    </item>
+    
+    <item>
+      <title>Взаимодействие с организацией-партнёром</title>
+      <link>http://localhost:1313/journal2/post-1/</link>
+      <pubDate>Sat, 10 May 2025 10:00:00 +0300</pubDate>
+      
+      <guid>http://localhost:1313/journal2/post-1/</guid>
+      
+      <description>&lt;h2&gt;&lt;/h2&gt;
+&lt;div style=&#34;text-align: center; margin-top: 1em; margin-bottom: 1em;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/images/car3.jpg&#34; alt=&#34;aim&#34; style=&#34;height: auto; width: auto; vertical-align: middle;&#34;&gt;
+&lt;/div&gt;
+&lt;h2&gt;&lt;/h2&gt;
+&lt;h2 id=&#34;участие-в-карьерном-марафоне&#34;&gt;Участие в карьерном марафоне&lt;/h2&gt;
+&lt;p&gt;Участие в карьерном марафоне, организованном университетом, стало для меня значимым этапом профессионального становления. Мне удалось не только посетить выставку индустриальных партнеров, среди которых были такие гиганты, как &lt;strong&gt;ПАО «Сбербанк», ПАО «Ростелеком», Young&amp;amp;&amp;amp;Yandex и R-Vision&lt;/strong&gt;, но и принять активное участие в ряде целевых мероприятий.&lt;/p&gt;
+&lt;h2&gt;&lt;/h2&gt;
+&lt;div style=&#34;text-align: center; margin-top: 1em; margin-bottom: 1em;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/images/car1.jpg&#34; alt=&#34;aim&#34; style=&#34;width: 58%; vertical-align: middle;&#34;&gt;
+&lt;/div&gt;
+&lt;h2&gt;&lt;/h2&gt;
+&lt;p&gt;Посещение выставки &lt;strong&gt;индустриальных партнёров&lt;/strong&gt; и ряда &lt;strong&gt;специализированных мастер-классов&lt;/strong&gt; предоставило мне отличную возможность для непосредственного взаимодействия с представителями ведущих компаний, установлению ценных профессиональных связей и погружению в актуальные технологические тренды.&lt;/p&gt;</description>
+      
+    </item>
+    
+  </channel>
+</rss>

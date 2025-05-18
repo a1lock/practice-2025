@@ -5,7 +5,6 @@ draft: false
 menu:
   main:
     weight: 30
-featuredImage: "/images/journal-banner.jpg"
 ---
 
 <!-- ## Журнал проекта
