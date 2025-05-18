@@ -13,7 +13,7 @@
 
 ## Вариативная часть задания
 
-Практическая реализация технологии: создание [Реализация RESTful Web API с помощью Python и Flask](https://blog.luisrei.com/articles/flaskrest.html)
+Практическая реализация технологии: [Реализация RESTful Web API с помощью Python и Flask](https://blog.luisrei.com/articles/flaskrest.html)
 
 ## Ответственный по проектной (учебной) практике
 
