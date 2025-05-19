@@ -169,7 +169,8 @@ def list_all_services_page(): # Описательное имя
         {"name": "Цитаты дня и Факты", "url": url_for('service_quote_page'), "description": "Ваша ежедневная порция мудрости и знаний. Вдохновляйтесь и расширяйте кругозор"},
         {"name": "Каталог книг и фильмов", "url": url_for('service_catalog_page'), "description": "Сохраните воспоминания о лучших книгах и фильмах. Ваша личная история чтения и просмотров"},
         {"name": "Простой калькулятор", "url": url_for('service_calculator_page'), "description": "Мгновенные арифметические вычисления без лишних сложностей"},
-        {"name": "Генератор случайных данных", "url": url_for('service_random_page'), "description": "Положитесь на волю случая! Сгенерируйте случайные числа или создайте уникальный пароль в один клик"}
+        {"name": "Генератор случайных данных", "url": url_for('service_random_page'), "description": "Положитесь на волю случая! Сгенерируйте случайные числа или создайте уникальный пароль в один клик"},
+        {"name": "Конвертер единиц измерения", "url": url_for('service_converter_page'), "description": "Конвертируйте различные единицы длины, объёма и размера данных."}
     ]
     return render_template('services.html', services=services_summary, page_title="Наши онлайн-сервисы")
 
@@ -749,6 +750,135 @@ def random_data_api_get_password():
         "requested_length": password_length,
         "special_symbols_included": include_special_chars
     })
+
+
+# --- Сервис 7: Конвертер Единиц Измерения ---
+
+# Данные для конвертации. Ключи - базовые единицы для каждой категории (для упрощения расчетов).
+# Значения - коэффициенты относительно базовой единицы.
+# Например, для длины базовая единица - метр.
+CONVERSION_RATES = {
+    "length": {
+        "meter": {"name": "Метр (м)", "factor": 1.0},
+        "millimeter": {"name": "Миллиметр (мм)", "factor": 0.001},
+        "centimeter": {"name": "Сантиметр (см)", "factor": 0.01},
+        "decimeter": {"name": "Дециметр (дм)", "factor": 0.1},
+        "kilometer": {"name": "Километр (км)", "factor": 1000.0},
+        "inch": {"name": "Дюйм (in)", "factor": 0.0254},
+        "foot": {"name": "Фут (ft)", "factor": 0.3048},
+        "yard": {"name": "Ярд (yd)", "factor": 0.9144},
+        "mile": {"name": "Миля (mi)", "factor": 1609.344},
+    },
+    "volume_metric": { # Используем "кубический метр" как базу
+        "cubic_meter": {"name": "Кубический метр (м³)", "factor": 1.0},
+        "cubic_centimeter": {"name": "Кубический сантиметр (см³)", "factor": 1e-6}, # 1 (см^3) = 10^-6 м^3
+        "milliliter": {"name": "Миллилитр (мл)", "factor": 1e-6}, # 1 мл = 1 см^3
+        "liter": {"name": "Литр (л)", "factor": 1e-3},           # 1 л = 1 дм^3 = 1000 см^3 = 0.001 м^3
+        "cubic_decimeter": {"name": "Кубический дециметр (дм³)", "factor": 1e-3},
+        "cubic_millimeter": {"name": "Кубический миллиметр (мм³)", "factor": 1e-9},
+    },
+    "data_storage_binary": { # Используем "байт" как базу (двоичная система)
+        "byte": {"name": "Байт (B)", "factor": 1.0},
+        "bit": {"name": "Бит (bit)", "factor": 1.0 / 8.0},
+        "kibibyte": {"name": "Кибибайт (KiB)", "factor": 1024.0}, # 1024 байт
+        "mebibyte": {"name": "Мебибайт (MiB)", "factor": 1024.0**2},
+        "gibibyte": {"name": "Гибибайт (GiB)", "factor": 1024.0**3},
+        "tebibyte": {"name": "Тебибайт (TiB)", "factor": 1024.0**4},
+        "pebibyte": {"name": "Пебибайт (PiB)", "factor": 1024.0**5},
+    },
+    "data_storage_decimal": { # Используем "байт" как базу (десятичная система)
+        "byte_decimal": {"name": "Байт (B, дес.)", "factor": 1.0, "base_unit": "byte"}, # Для консистентности ключей
+        "kilobyte": {"name": "Килобайт (KB)", "factor": 1000.0}, # 1000 байт
+        "megabyte": {"name": "Мегабайт (MB)", "factor": 1000.0**2},
+        "gigabyte": {"name": "Гигабайт (GB)", "factor": 1000.0**3},
+        "terabyte": {"name": "Терабайт (TB)", "factor": 1000.0**4},
+        "petabyte": {"name": "Петабайт (PB)", "factor": 1000.0**5},
+    }
+    # TODO: Добавить другие категории (вес, температура и т.д.)
+}
+
+@app.route('/service/converter')
+def service_converter_page():
+    """Отображает интерактивную страницу и документацию для сервиса "Конвертер Единиц"."""
+    service_page_data = {
+        "name": "Конвертер единиц измерения",
+        "intro": "Быстро и точно конвертируйте значения между различными единицами длины, объёма и размера данных. Выберите категорию, укажите значение и получите результат!",
+        "page_url_name": "service_converter_page",
+        "endpoints": [
+            {"method": "GET", "path": url_for('converter_api_get_units'), 
+             "description": "Получить список доступных категорий и единиц измерения в них."},
+            {"method": "GET", "path": f"{url_for('converter_api_convert')}?category=CATEGORY&from_unit=UNIT_A&to_unit=UNIT_B&value=X", 
+             "description": "Выполнить конвертацию. Например: ?category=length&from_unit=meter&to_unit=foot&value=10"}
+        ]
+    }
+    return render_template('service_converter.html', service_data=service_page_data, page_title=service_page_data["name"])
+
+@app.route('/api/converter/units', methods=['GET'])
+def converter_api_get_units():
+    """API: Возвращает доступные категории и единицы для конвертации."""
+    # Формируем данные для ответа, чтобы UI было удобно их использовать
+    categories_for_response = {}
+    for category_key, units_dict in CONVERSION_RATES.items():
+        categories_for_response[category_key] = [
+            {"id": unit_id, "name": unit_data["name"]} for unit_id, unit_data in units_dict.items()
+        ]
+    
+    category_display_names = {
+        "length": "Длина",
+        "volume_metric": "Объём (метрическая система)",
+        "data_storage_binary": "Размер данных (двоичная)",
+        "data_storage_decimal": "Размер данных (десятичная)"
+    }
+    
+    return jsonify({
+        "category_names": category_display_names,
+        "units_by_category": categories_for_response
+        })
+
+@app.route('/api/converter/convert', methods=['GET'])
+def converter_api_convert():
+    """API: Выполняет конвертацию между единицами."""
+    try:
+        category = request.args.get('category', type=str)
+        from_unit_id = request.args.get('from_unit', type=str)
+        to_unit_id = request.args.get('to_unit', type=str)
+        value_str = request.args.get('value')
+
+        if not all([category, from_unit_id, to_unit_id, value_str]):
+            return jsonify({"error": "Необходимо указать все параметры: category, from_unit, to_unit, value."}), 400
+
+        value = float(value_str) # Преобразуем значение в число
+
+        if category not in CONVERSION_RATES:
+            return jsonify({"error": f"Неизвестная категория: {category}."}), 400
+        
+        category_units = CONVERSION_RATES[category]
+        if from_unit_id not in category_units or to_unit_id not in category_units:
+            return jsonify({"error": f"Одна из единиц ({from_unit_id} или {to_unit_id}) не найдена в категории {category}."}), 400
+
+        from_unit_data = category_units[from_unit_id]
+        to_unit_data = category_units[to_unit_id]
+
+        # Конвертируем значение в базовую единицу категории, затем в целевую единицу
+        value_in_base_unit = value * from_unit_data["factor"]
+        converted_value = value_in_base_unit / to_unit_data["factor"]
+        
+        return jsonify({
+            "original_value": value,
+            "original_unit_id": from_unit_id,
+            "original_unit_name": from_unit_data["name"],
+            "converted_value": round(converted_value, 6), # Округляем для лучшего вида
+            "converted_unit_id": to_unit_id,
+            "converted_unit_name": to_unit_data["name"],
+            "category": category
+        })
+
+    except ValueError:
+        return jsonify({"error": "Параметр 'value' должен быть числом."}), 400
+    except Exception as e:
+        app.logger.error(f"Ошибка конвертации: {e}", exc_info=True)
+        return jsonify({"error": "Внутренняя ошибка сервера при конвертации."}), 500
+
 
 # --- Блок запуска Flask-приложения ---
 # Этот код выполняется только тогда, когда скрипт app.py запускается напрямую

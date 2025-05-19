@@ -1,0 +1,184 @@
+{% extends "layout.html" %}
+
+{% block title %}{{ service_data.name if service_data else "Конвертер Единиц"}}{% endblock %}
+{% block header_title %}{{ service_data.name if service_data else "Сервис Конвертера Единиц" }}{% endblock %}
+
+{% block content %}
+<section class="service-description-page">
+    <h2>Сервис: {{ service_data.name if service_data else "Конвертер Единиц Измерения" }}</h2>
+    {% if service_data and service_data.intro %}
+    <p class="service-intro">{{ service_data.intro }}</p>
+    {% endif %}
+
+    <h3>Описание API Эндпоинтов (для разработчиков):</h3>
+    {% if service_data and service_data.endpoints %}
+    <div class="api-endpoints">
+        {% for endpoint in service_data.endpoints %}
+        <div class="endpoint-card">
+            <h4><code>{{ endpoint.method }} {{ endpoint.path }}</code></h4>
+            {% if endpoint.description %}<p>{{ endpoint.description }}</p>{% endif %}
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}<p>Описание API не добавлено.</p>{% endif %}
+</section>
+
+<hr class="separator">
+
+<section class="interactive-converter">
+    <h2>Конвертер (Интерактивно):</h2>
+    <div class="converter-form-container">
+        <form id="unitConverterForm">
+            <div class="form-group">
+                <label for="categorySelect">Категория:</label>
+                <select id="categorySelect" name="category"></select>
+            </div>
+            <div class="form-group">
+                <label for="valueInput">Значение:</label>
+                <input type="number" id="valueInput" name="value" step="any" placeholder="Введите значение" required>
+            </div>
+            <div class="form-group">
+                <label for="fromUnitSelect">Из:</label>
+                <select id="fromUnitSelect" name="from_unit"></select>
+            </div>
+            <div class="form-group">
+                <label for="toUnitSelect">В:</label>
+                <select id="toUnitSelect" name="to_unit"></select>
+            </div>
+            <button type="submit" class="btn btn-action">Конвертировать</button>
+        </form>
+        <div id="converter-message" class="form-message"></div>
+        <div id="converterResultDisplay" class="converter-result" style="display: none;">
+            <h4>Результат:</h4>
+            <p id="conversionResultText"></p>
+        </div>
+    </div>
+</section>
+
+<script>
+(function() {
+    if (!document.getElementById('unitConverterForm')) return;
+
+    const categorySelect = document.getElementById('categorySelect');
+    const fromUnitSelect = document.getElementById('fromUnitSelect');
+    const toUnitSelect = document.getElementById('toUnitSelect');
+    const valueInput = document.getElementById('valueInput');
+    const converterForm = document.getElementById('unitConverterForm');
+    const messageDiv = document.getElementById('converter-message');
+    const resultDisplayDiv = document.getElementById('converterResultDisplay');
+    const resultTextP = document.getElementById('conversionResultText');
+    
+    const unitsApiUrl = '{{ url_for("converter_api_get_units") }}';
+    const convertApiUrlBase = '{{ url_for("converter_api_convert") }}'; // База, параметры будут добавлены
+
+    let unitsData = {}; // Для хранения данных о категориях и единицах
+
+    function showConverterMessage(message, isError = false) {
+        messageDiv.textContent = message;
+        messageDiv.className = isError ? 'form-message error' : 'form-message success';
+        messageDiv.style.display = 'block';
+        resultDisplayDiv.style.display = 'none';
+        setTimeout(() => { 
+            messageDiv.textContent = ''; 
+            messageDiv.className = 'form-message';
+            messageDiv.style.display = 'none';
+        }, 4000);
+    }
+
+    function populateSelectWithOptions(selectElement, optionsArray, defaultText = "Выберите...") {
+        selectElement.innerHTML = `<option value="">${defaultText}</option>`; // Очищаем и добавляем дефолт
+        optionsArray.forEach(option => {
+            const opt = document.createElement('option');
+            opt.value = option.id;
+            opt.textContent = option.name;
+            selectElement.appendChild(opt);
+        });
+    }
+
+    async function loadUnits() {
+        try {
+            const response = await fetch(unitsApiUrl);
+            if (!response.ok) throw new Error(`Ошибка HTTP: ${response.status}`);
+            const data = await response.json();
+            unitsData = data; // Сохраняем данные
+
+            // Заполняем селект категорий
+            categorySelect.innerHTML = '<option value="">Выберите категорию...</option>';
+            for (const categoryId in data.category_names) {
+                const opt = document.createElement('option');
+                opt.value = categoryId;
+                opt.textContent = data.category_names[categoryId];
+                categorySelect.appendChild(opt);
+            }
+        } catch (error) {
+            console.error("Ошибка загрузки единиц:", error);
+            showConverterMessage("Не удалось загрузить список единиц измерения.", true);
+        }
+    }
+
+    categorySelect.addEventListener('change', function() {
+        const selectedCategory = this.value;
+        fromUnitSelect.innerHTML = '<option value="">--</option>'; // Очистка
+        toUnitSelect.innerHTML = '<option value="">--</option>';   // Очистка
+        resultDisplayDiv.style.display = 'none'; // Скрыть результат при смене категории
+
+        if (selectedCategory && unitsData.units_by_category && unitsData.units_by_category[selectedCategory]) {
+            const unitsForCategory = unitsData.units_by_category[selectedCategory];
+            populateSelectWithOptions(fromUnitSelect, unitsForCategory, "Из какой единицы...");
+            populateSelectWithOptions(toUnitSelect, unitsForCategory, "В какую единицу...");
+        }
+    });
+
+    converterForm.addEventListener('submit', async function(event) {
+        event.preventDefault();
+        const category = categorySelect.value;
+        const fromUnit = fromUnitSelect.value;
+        const toUnit = toUnitSelect.value;
+        const value = valueInput.value;
+
+        if (!category || !fromUnit || !toUnit || value === '') {
+            showConverterMessage("Пожалуйста, заполните все поля: категория, значение и обе единицы.", true);
+            return;
+        }
+        if (isNaN(parseFloat(value))) {
+            showConverterMessage("Значение для конвертации должно быть числом.", true);
+            return;
+        }
+        
+        const params = new URLSearchParams({
+            category: category,
+            from_unit: fromUnit,
+            to_unit: toUnit,
+            value: value
+        });
+
+        showConverterMessage("Конвертация...", false);
+        resultDisplayDiv.style.display = 'none';
+
+        try {
+            const response = await fetch(`${convertApiUrlBase}?${params.toString()}`);
+            const data = await response.json();
+
+            if (!response.ok) {
+                showConverterMessage(data.error || `Ошибка сервера: ${response.status}`, true);
+                throw new Error(data.error || `HTTP Error`);
+            }
+
+            messageDiv.style.display = 'none';
+            resultTextP.textContent = `${data.original_value} ${data.original_unit_name} = ${data.converted_value} ${data.converted_unit_name}`;
+            resultDisplayDiv.style.display = 'block';
+
+        } catch (error) {
+            console.error("Ошибка при конвертации:", error);
+            if (!messageDiv.textContent || messageDiv.style.display === 'none' || messageDiv.classList.contains('success')) {
+                 showConverterMessage("Не удалось выполнить конвертацию. Проверьте данные.", true);
+            }
+        }
+    });
+
+    // Начальная загрузка категорий и единиц
+    loadUnits();
+
+})();
+</script>
+{% endblock %}

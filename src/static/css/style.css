@@ -1104,7 +1104,7 @@ hr.separator {
 }
 
 .btn-copy.btn-small { /* Стили кнопки Копировать для генератора */
-    background-color: #5bc0de; /* Bootstrap info-like */
+    background-color: #5bc0de;
     color: white;
     border: none; /* Если .btn не определяет это */
     border-radius: 4px; /* Если .btn не определяет это */
@@ -1113,4 +1113,66 @@ hr.separator {
 
 .btn-copy.btn-small:hover {
     background-color: #31b0d5;
+}
+
+/* ======== Стили для Интерактивного Конвертера Единиц ======== */
+
+.interactive-converter {
+    background: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    margin-top: 30px;
+}
+
+.interactive-converter h2 {
+    margin-top: 0;
+    font-size: 1.8em;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.converter-form-container .form-group {
+    margin-bottom: 18px;
+}
+
+.converter-form-container label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+    color: #555;
+}
+
+.converter-form-container input[type="number"],
+.converter-form-container select {
+    width: calc(100% - 26px); /* Учитываем padding */
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    box-sizing: border-box; /* Важно для правильного расчета ширины */
+}
+
+/* Кнопка btn-action уже должна быть определена в общих стилях */
+
+.converter-result {
+    margin-top: 25px;
+    padding: 20px;
+    background-color: #e9f5f9; /* Светло-голубой фон для результата */
+    border: 1px solid #c8e0e9;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.converter-result h4 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #0056b3; /* Темно-синий */
+}
+
+#conversionResultText {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #333;
 }
