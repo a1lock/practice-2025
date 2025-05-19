@@ -51,7 +51,7 @@ author: "Команда проекта"
 ##
 
 <div style="text-align: center; margin-top: 1em; margin-bottom: 1em;">
-  <img src="/images/var3.png" alt="aim" style="height: auto; width: auto; vertical-align: middle;">
+  <img src="/images/todolist.png" alt="aim" style="height: auto; width: auto; vertical-align: middle;">
 </div>
 
 ##
