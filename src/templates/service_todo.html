@@ -90,7 +90,9 @@
 
             tasks.forEach(task => {
                 const li = document.createElement('li');
-                li.className = `task-item ${task.done ? 'done' : ''}`;
+                console.log('Задача', task.id, 'done?', task.done);
+                li.classList.add('task-item');
+                li.classList.toggle('done', task.done);
                 li.dataset.taskId = task.id;
 
                 const taskTextSpan = document.createElement('span');
@@ -101,7 +103,7 @@
                 actionsDiv.className = 'task-actions';
 
                 const toggleDoneButton = document.createElement('button');
-                toggleDoneButton.textContent = task.done ? 'Не выполнено' : 'Выполнено';
+                toggleDoneButton.textContent = task.done ? 'Выполнено' : 'Не выполнено';
                 toggleDoneButton.className = `btn btn-toggle ${task.done ? 'btn-undo' : 'btn-done'}`;
                 toggleDoneButton.addEventListener('click', () => toggleTaskDone(task.id, !task.done));
                 
