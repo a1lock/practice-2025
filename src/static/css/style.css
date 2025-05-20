@@ -239,7 +239,7 @@ footer a:hover {
 }
 
 
-/* ======== Стили для Страницы Сервисов (services.html) ======== */
+/* ======== Стили для Страницы сервисов (services.html) ======== */
 
 .services-grid {
     display: grid;
@@ -278,7 +278,7 @@ footer a:hover {
 }
 
 
-/* ======== Стили для Страниц Описания Сервисов (service_details.html и его наследники) ======== */
+/* ======== Стили для Страниц описания сервисов (service_details.html и его наследники) ======== */
 
 .service-description-page { /* Общий контейнер на страницах service_*.html */
     background: #fff;
@@ -412,7 +412,7 @@ hr.separator {
 }
 
 
-/* ======== Стили для Интерактивного To-Do List ======== */
+/* ======== Стили для To-Do List ======== */
 
 .interactive-todo {
     background: #ffffff;
@@ -578,7 +578,7 @@ hr.separator {
     border-color: #f5c2c7; 
 }
 
-/* ======== Стили для Интерактивного Сокращателя URL ======== */
+/* ======== Стили для Сокращателя URL ======== */
 
 .interactive-shortener { 
     background: #fff; 
@@ -660,7 +660,7 @@ hr.separator {
 }
 
 
-/* ======== Стили для Интерактивных Цитат ======== */
+/* ======== Стили для Цитат ======== */
 
 .interactive-quote { 
     background: #fff; 
@@ -730,7 +730,7 @@ hr.separator {
     content: "— "; 
 }
 
-/* ======== Стили для Интерактивного Каталога ======== */
+/* ======== Стили для Каталога ======== */
 
 .interactive-catalog { 
     background: #fff; 
@@ -870,7 +870,7 @@ hr.separator {
 }
 
 
-/* ======== Стили для Интерактивного Калькулятора ======== */
+/* ======== Стили для Калькулятора ======== */
 
 .interactive-calculator-ui { /* Новый класс для общего контейнера */
     background: #fff;
@@ -1000,7 +1000,7 @@ hr.separator {
 
 
 
-/* ======== Стили для Интерактивного Генератора ======== */
+/* ======== Стили для Генератора ======== */
 
 .interactive-random { 
     background: #fff; 
@@ -1115,7 +1115,7 @@ hr.separator {
     background-color: #31b0d5;
 }
 
-/* ======== Стили для Интерактивного Конвертера Единиц ======== */
+/* ======== Стили для Конвертера единиц ======== */
 
 .interactive-converter {
     background: #fff;
